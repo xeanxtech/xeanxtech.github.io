@@ -1,0 +1,2631 @@
+<!DOCTYPE html>
+
+<html lang="tr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Amazon Amerika Pazarı - İleri Seviye E-ticaret Uzmanlığı</title>
+<style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
+            color: #F1F5F9;
+            overflow: hidden;
+        }
+
+        .presentation-container {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .slide {
+            width: 95%;
+            max-width: 1400px;
+            height: 95vh;
+            background: rgba(30, 41, 59, 0.95);
+            border-radius: 20px;
+            padding: 40px;
+            display: none;
+            flex-direction: column;
+            justify-content: flex-start;
+            position: relative;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(222, 58, 46, 0.2);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+            overflow-y: auto;
+        }
+
+        .slide.active {
+            display: flex;
+            animation: slideIn 0.8s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .slide-number {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            background: #DE3A2E;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 12px;
+            z-index: 10;
+        }
+
+        h1 {
+            font-size: 3rem;
+            color: #DE3A2E;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 700;
+            letter-spacing: -2px;
+            line-height: 1.1;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: #DE3A2E;
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: 600;
+            letter-spacing: -1px;
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            color: #10B981;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        h4 {
+            font-size: 1.4rem;
+            color: #3B82F6;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            color: #94A3B8;
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: 300;
+            line-height: 1.4;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .card {
+            background: rgba(15, 23, 42, 0.7);
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid rgba(222, 58, 46, 0.3);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            border-color: #DE3A2E;
+            box-shadow: 0 10px 25px rgba(222, 58, 46, 0.2);
+        }
+
+        .card h4 {
+            color: #DE3A2E;
+            font-size: 1.2rem;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .card p {
+            color: #CBD5E1;
+            line-height: 1.5;
+            font-size: 0.95rem;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #DE3A2E, #EF4444);
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            text-align: center;
+            color: white;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .stats-container {
+            display: flex;
+            justify-content: space-around;
+            margin: 30px 0;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .stat-item {
+            text-align: center;
+            background: rgba(15, 23, 42, 0.5);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            flex: 1;
+            min-width: 120px;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            color: #10B981;
+            font-weight: 700;
+            display: block;
+        }
+
+        .stat-label {
+            color: #94A3B8;
+            font-size: 0.8rem;
+            margin-top: 5px;
+        }
+
+        .navigation {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 1000;
+        }
+
+        .nav-btn {
+            background: #DE3A2E;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav-btn:hover {
+            background: #EF4444;
+            transform: scale(1.05);
+        }
+
+        .nav-btn:disabled {
+            background: #475569;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: linear-gradient(90deg, #DE3A2E, #10B981);
+            transition: width 0.3s ease;
+            z-index: 1001;
+        }
+
+        .icon {
+            font-size: 1.2rem;
+            margin-right: 8px;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        li {
+            background: rgba(15, 23, 42, 0.5);
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 3px solid #10B981;
+            color: #E2E8F0;
+            font-size: 1rem;
+            line-height: 1.4;
+            transition: all 0.3s ease;
+        }
+
+        li:hover {
+            background: rgba(15, 23, 42, 0.8);
+            border-left-color: #DE3A2E;
+        }
+
+        .big-number {
+            font-size: 3.5rem;
+            color: #DE3A2E;
+            font-weight: 900;
+            text-align: center;
+            margin: 15px 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .intro-slide {
+            text-align: center;
+            background: linear-gradient(135deg, #1E293B, #0F172A);
+            justify-content: center;
+        }
+
+        .intro-slide h1 {
+            font-size: 4rem;
+            background: linear-gradient(135deg, #DE3A2E, #EF4444);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: start;
+        }
+
+        .three-column {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            align-items: start;
+        }
+
+        .case-study {
+            background: linear-gradient(135deg, #0F172A, #1E293B);
+            border: 2px solid #10B981;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+        }
+
+        .case-study h4 {
+            color: #10B981;
+            margin-bottom: 15px;
+        }
+
+        .metrics {
+            display: flex;
+            justify-content: space-between;
+            margin: 15px 0;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .metric {
+            background: rgba(222, 58, 46, 0.1);
+            padding: 10px 15px;
+            border-radius: 8px;
+            text-align: center;
+            flex: 1;
+            min-width: 80px;
+        }
+
+        .metric-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #DE3A2E;
+        }
+
+        .metric-label {
+            font-size: 0.8rem;
+            color: #94A3B8;
+        }
+
+        .chart-container {
+            background: rgba(15, 23, 42, 0.8);
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .chart-bar {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+            gap: 15px;
+        }
+
+        .chart-label {
+            min-width: 100px;
+            text-align: left;
+            font-size: 0.9rem;
+        }
+
+        .chart-value {
+            background: linear-gradient(90deg, #DE3A2E, #10B981);
+            height: 25px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            padding: 0 10px;
+            color: white;
+            font-weight: bold;
+            font-size: 0.8rem;
+        }
+
+        .warning-box {
+            background: linear-gradient(135deg, #F59E0B, #EF4444);
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            border-left: 5px solid #EF4444;
+        }
+
+        .success-box {
+            background: linear-gradient(135deg, #10B981, #059669);
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            border-left: 5px solid #059669;
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, #3B82F6, #1D4ED8);
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            border-left: 5px solid #1D4ED8;
+        }
+
+        .timeline {
+            position: relative;
+            padding: 20px 0;
+        }
+
+        .timeline-item {
+            display: flex;
+            margin: 20px 0;
+            align-items: center;
+        }
+
+        .timeline-date {
+            background: #DE3A2E;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 20px;
+            font-weight: bold;
+            min-width: 100px;
+            text-align: center;
+        }
+
+        .timeline-content {
+            background: rgba(15, 23, 42, 0.7);
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin-left: 20px;
+            flex: 1;
+        }
+
+        .ai-tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .ai-tool {
+            background: linear-gradient(135deg, #1E293B, #0F172A);
+            border: 1px solid #3B82F6;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .ai-tool:hover {
+            border-color: #DE3A2E;
+            transform: translateY(-3px);
+        }
+
+        .ai-tool h5 {
+            color: #3B82F6;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .platform-comparison {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .platform {
+            background: rgba(15, 23, 42, 0.8);
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .platform.facebook { border-color: #1877F2; }
+        .platform.tiktok { border-color: #FE2C55; }
+        .platform.pinterest { border-color: #BD081C; }
+        .platform.google { border-color: #4285F4; }
+
+        .question-slide {
+            justify-content: center;
+            text-align: center;
+        }
+
+        .question-slide .big-number {
+            font-size: 5rem;
+            margin: 30px 0;
+        }
+
+        .action-box {
+            background: linear-gradient(135deg, #8B5CF6, #A855F7);
+            padding: 25px;
+            border-radius: 12px;
+            margin: 20px 0;
+            border-left: 5px solid #7C3AED;
+            text-align: center;
+        }
+
+        .creator-connections-slide {
+            background: rgba(30, 41, 59, 0.95);
+        }
+
+        .creator-visual {
+            background: linear-gradient(45deg, #F59E0B, #EF4444, #8B5CF6);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+            text-align: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        @media (max-width: 1024px) {
+            .slide {
+                padding: 25px;
+            }
+            
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 2rem; }
+            
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .two-column, .three-column {
+                grid-template-columns: 1fr;
+            }
+        }
+    
+
+body {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.slide {
+    height: auto !important;
+    min-height: 100vh;
+}
+
+@media (max-width: 768px) {
+    .two-column,
+    .three-column,
+    .stats-container {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 20px !important;
+    }
+
+    .slide {
+        padding: 15px !important;
+    }
+
+    h1 { font-size: 2rem !important; }
+    h2 { font-size: 1.5rem !important; }
+    h3 { font-size: 1.3rem !important; }
+    h4 { font-size: 1.1rem !important; }
+
+    .nav-btn {
+        padding: 8px 14px !important;
+        font-size: 0.8rem !important;
+    }
+}
+</style>
+</head>
+<body>
+<div class="progress-bar" id="progressBar"></div>
+<div class="presentation-container">
+<!-- Slide 1: Başlık -->
+<div class="slide active intro-slide"><img src="https://i.hizliresim.com/rdlgc17.png" style="position: absolute; top: 20px; left: 30px; max-width: 37.5px; z-index: 1000;"/>
+<div class="slide-number">1/38</div>
+<h1>DENİB Akademi - Amazon Stratejileri ve Beyin Fırtınası</h1>
+<p class="subtitle">İhracatçılar için İleri Seviye Pazarlama Stratejileri</p>
+<div class="subtitle">Amazon ABD Pazarında Rekabet Avantajı Kazanma Rehberi</div>
+<div class="highlight-box">
+                Denizli İhracatçılar Birliği - 5 Saatlik Uzmanlık Yolculuğu
+            </div>
+</div>
+<!-- Slide 2: Şaşırtıcı Soru -->
+<div class="slide question-slide"><img src="https://i.hizliresim.com/rdlgc17.png" style="position: absolute; top: 20px; left: 30px; max-width: 37.5px; z-index: 1000;"/>
+<div class="slide-number">2/38</div>
+<h2>Soru:</h2>
+<p class="subtitle">Amazon'da satış yapan Türk markalarının...</p>
+<div class="big-number">%97'si</div>
+<p class="subtitle">...bu özelliği kullanmıyor ve ayda minimum <strong>$50.000</strong> potansiyel gelir kaybediyor</p>
+<div class="warning-box">
+                🤔 Bu özellik nedir? Cevap bir sonraki slayta...
+            </div>
+</div>
+<!-- Slide 3: Cevap - Amazon DSP -->
+<div class="slide"><img src="https://i.hizliresim.com/rdlgc17.png" style="position: absolute; top: 20px; left: 30px; max-width: 37.5px; z-index: 1000;"/>
+<div class="slide-number">3/38</div>
+<p class="subtitle">Talep Tarafı Platformu - Amazon'ın gizli silahı</p>
+<div class="stats-container">
+<div class="stat-item">
+<span class="stat-number">2.5x</span>
+<span class="stat-label">Reklam Getirisi artışı</span>
+</div>
+<div class="stat-item">
+<span class="stat-number">65%</span>
+<span class="stat-label">Daha düşük tıklama maliyeti</span>
+</div>
+<div class="stat-item">
+<span class="stat-number">4x</span>
+<span class="stat-label">Hedef kitle erişimi</span>
+</div>
+</div>
+<div class="success-box">
+<strong>Türk markaları neden kullanmıyor?</strong><br/>
+                • Esnek bütçe seçenekleri: Amazon Reklam Konsolu üzerinden $1/gün ile başlanabilir<br/>
+                • Karmaşık kurulum süreci<br/>
+                • Bilgi eksikliği<br/>
+                • Teknik uzmanlık eksikliği: DSP kampanyaları için veri analitiği ve hedefleme bilgisi gereklidir
+            </div>
+<div class="info-box">
+                💡 İpucu: Amazon Reklam Konsolu ile küçük bütçelerle DSP başlatabilir, performansa göre ölçeklendirebilirsiniz.
+            </div>
+<div style="overflow-x: auto; margin-top: 20px;">
+</div>
+<h2 style="font-size: 1.5rem; color: #F8FAFC; margin-bottom: 16px;">Amazon DSP vs. Amazon Sponsored Ads Karşılaştırma Tablosu</h2>
+<table style="width: 100%; border-collapse: collapse; font-size: 0.95rem;">
+<thead style="background-color: #1E293B; color: #F8FAFC;">
+<tr>
+<th style="border: 1px solid #334155; padding: 10px;">Özellik / Kriter</th>
+<th style="border: 1px solid #334155; padding: 10px;">Amazon DSP</th>
+<th style="border: 1px solid #334155; padding: 10px;">Amazon Sponsored Ads</th>
+</tr>
+</thead>
+<tbody>
+<tr style="background-color: #0F172A; color: #F1F5F9;"><td style="border: 1px solid #334155; padding: 10px;">Erişim Alanı</td><td>Amazon dışı siteler, uygulamalar, bağlı TV’ler dahil tüm dijital alanlar</td><td>Sadece Amazon içi (Amazon.com, mobil uygulama, Amazon ürün sayfaları)</td></tr>
+<tr><td style="border: 1px solid #334155; padding: 10px;">Kullanım Şartı</td><td>Marka kaydı zorunlu + genellikle $10K+ bütçe</td><td>Marka kaydı tercihe bağlı (SB/SBV için gerekir), küçük bütçelerle başlanabilir</td></tr>
+<tr style="background-color: #0F172A; color: #F1F5F9;"><td style="border: 1px solid #334155; padding: 10px;">Hedefleme Yeteneği</td><td>Cihazlar arası, davranışsal, demografik, lokasyon bazlı gelişmiş hedefleme</td><td>Anahtar kelime, ürün hedefleme, kategori hedefleme gibi basit hedefleme</td></tr>
+<tr><td style="border: 1px solid #334155; padding: 10px;">Yeniden Hedefleme (Retargeting)</td><td>Evet (ürünü görüntüleyen ama almayan kişilere site dışı tekrar ulaşma)</td><td>Kısıtlı (aynı ürüne tekrar reklam gösterimi sınırlı, remarketing zayıf)</td></tr>
+<tr style="background-color: #0F172A; color: #F1F5F9;"><td style="border: 1px solid #334155; padding: 10px;">Reklam Formatları</td><td>Görsel banner, video, TV reklamları</td><td>Metin + görsel (SP), video (SBV), headline (SB)</td></tr>
+<tr><td style="border: 1px solid #334155; padding: 10px;">Raporlama ve Veri</td><td>Derin segment analizleri, site dışı davranışlar, marka farkındalığı ölçümü</td><td>Temel performans metrikleri (ACOS, ROAS, CTR vb.)</td></tr>
+<tr style="background-color: #0F172A; color: #F1F5F9;"><td style="border: 1px solid #334155; padding: 10px;">Kampanya Yönetimi</td><td>Genellikle Amazon ekibi veya ajanslar yönetir (managed/self-service seçenekli)</td><td>Satıcı kendi yönetebilir (basit arayüz)</td></tr>
+<tr><td style="border: 1px solid #334155; padding: 10px;">Dönüşüm Hunisi Aşamaları</td><td>Farkındalık, İlgi, Değerlendirme (upper-funnel + mid-funnel)</td><td>Satın alma odaklı (lower-funnel)</td></tr>
+<tr style="background-color: #0F172A; color: #F1F5F9;"><td style="border: 1px solid #334155; padding: 10px;">Ölçüm ve A/B Test Desteği</td><td>Evet, gelişmiş A/B test araçları, Brand Lift analizleri</td><td>Sınırlı (manuel test yapılabilir)</td></tr>
+<tr><td style="border: 1px solid #334155; padding: 10px;">Fiyatlandırma Modeli</td><td>CPM (Gösterim başı maliyet)</td><td>CPC (Tıklama başı maliyet)</td></tr>
+</tbody>
+</table>
+</div>
+<!-- Slide 4: Amazon Ads Giriş -->
+<div class="slide"><img src="https://i.hizliresim.com/rdlgc17.png" style="position: absolute; top: 20px; left: 30px; max-width: 37.5px; z-index: 1000;"/>
+<div class="slide-number">4/38</div>
+<h2>Amazon Reklam Sistemine Derinlemesine Dalış</h2>
+<div class="three-column">
+<div class="card">
+<h4><span class="icon">🎯</span>Sponsorlu Ürünler</h4>
+<p>Ürün seviyesinde reklam</p>
+<div class="metrics">
+<div class="metric">
+<div class="metric-value">85%</div>
+<div class="metric-label">Satıcı kullanımı</div>
+</div>
+</div>
+</div>
+<div class="card">
+<h4><span class="icon">🏢</span>Sponsorlu Markalar</h4>
+<p>Marka farkındalığı</p>
+<div class="metrics">
+<div class="metric">
+<div class="metric-value">45%</div>
+<div class="metric-label">Satıcı kullanımı</div>
+</div>
+</div>
+</div>
+<div class="card">
+<h4><span class="icon">📺</span>Sponsorlu Gösterim</h4>
+<p>Yeniden hedefleme gücü</p>
+<div class="metrics">
+<div class="metric">
+<div class="metric-value">25%</div>
+<div class="metric-label">Satıcı kullanımı</div>
+</div>
+</div>
+</div>
+</div>
+<div class="highlight-box">
+                Amazon DSP bunların hepsini birleştiren üst seviye platform
+            </div>
+<h3>Reklam Performansını Artırma İpuçları</h3>
+<ul>
+<li><strong>Anahtar Kelime Optimizasyonu:</strong> Yüksek dönüşüm sağlayan kelimelere odaklanın.</li>
+<li><strong>Görsel Kalitesi:</strong> Profesyonel ve dikkat çekici görseller kullanın.</li>
+<li><strong>Hedef Kitle Segmentasyonu:</strong> Ürünle ilgilenen spesifik kitleleri hedefleyin.</li>
+</ul>
+</div>
+<!-- Slide 5: Amazon Ads Strateji -->
+<div class="slide"><img src="https://i.hizliresim.com/rdlgc17.png" style="position: absolute; top: 20px; left: 30px; max-width: 37.5px; z-index: 1000;"/>
+<div class="slide-number">5/38</div>
+<h2>Amazon Reklam Detaylı Strateji</h2>
+<div class="two-column">
+<div>
+<h3>Kampanya Mimarisi 4.0</h3>
+<ul>
+<li><span class="icon">🔍</span> <strong>Araştırma Kampanyası:</strong> Otomatik hedefleme ile anahtar kelime keşfi</li>
+<li><span class="icon">🎯</span> <strong>Performans Kampanyası:</strong> Tam eşleşme yüksek dönüşüm anahtar kelimeler</li>
+<li><span class="icon">🛡️</span> <strong>Savunma Kampanyası:</strong> Markalı anahtar kelime koruması</li>
+<li><span class="icon">⚔️</span> <strong>Rekabet Kampanyası:</strong> Rakip markalar</li>
+<li><span class="icon">📦</span> <strong>Ürün Hedefleme:</strong> Rakip ürün kodları</li>
+</ul>
+</div>
+<div>
+<h3>Teklif Optimizasyonu</h3>
+<div class="chart-container">
+<h4>Teklif Stratejisi Karşılaştırması</h4>
+<div class="chart-bar">
+<div class="chart-label">Dinamik Teklifler (Sadece Düşür)</div>
+<div class="chart-value" style="width: 60%;">ACOS %25</div>
+</div>
+<div class="chart-bar">
+<div class="chart-label">Dinamik Teklifler (Artır &amp; Düşür)</div>
+<div class="chart-value" style="width: 75%;">ACOS %32</div>
+</div>
+<div class="chart-bar">
+<div class="chart-label">Sabit Teklifler</div>
+<div class="chart-value" style="width: 45%;">ACOS %18</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Slide 6: Amazon Ads Case Study 1 -->
+<div class="slide"><img src="https://i.hizliresim.com/rdlgc17.png" style="position: absolute; top: 20px; left: 30px; max-width: 37.5px; z-index: 1000;"/>
+<div class="slide-number">6/38</div>
+<h2>Örnek Çalışma: Tekstil Markası - Bornoz &amp; Havlu</h2>
+<div class="case-study">
+<h4>🏠 Ev Tekstili Markası - Premium Bornoz Serisi</h4>
+<p><strong>Durum:</strong> Türk üreticisi, kaliteli pamuklu bornoz, yeni Amazon'a giriş</p>
+<div class="two-column">
+<div>
+<h4>Başlangıç Ölçümleri (0. Ay)</h4>
+<ul>
+<li>Aylık satış: $3,200</li>
+<li>Reklam maliyeti oranı: %78</li>
+<li>Organik sıralama: 2. sayfa</li>
+<li>Yorumlar: 12 adet</li>
+</ul>
+</div>
+<div>
+<h4>Uygulanan Strateji</h4>
+<ul>
+<li>🎯 Uzun kuyruk anahtar kelimeler: "türk pamuk bornoz"</li>
+<li>📦 Ürün hedefleme: Otel koleksiyonu ürün kodları</li>
+<li>🛡️ Marka savunması: Marka adı koruması</li>
+<li>📱 Sponsorlu markalar: Video reklamlar</li>
+</ul>
+</div>
+</div>
+<div class="metrics">
+<div class="metric">
+<div class="metric-value">6. Ay</div>
+<div class="metric-label">Süre</div>
+</div>
+<div class="metric">
+<div class="metric-value">$28,500</div>
+<div class="metric-label">Aylık Satış</div>
+</div>
+<div class="metric">
+<div class="metric-value">%23</div>
+<div class="metric-label">Reklam Maliyeti</div>
+</div>
+<div class="metric">
+<div class="metric-value">1. Sayfa</div>
+<div class="metric-label">Organik Sıra</div>
+</div>
+</div>
+</div>
+<div class="case-study">
+<h4>Türk B Markası - Seramik Ürünler</h4>
+<p><strong>Durum:</strong> Türkiye merkezli seramik sofra takımı üreticisi, Amazon ABD'de büyüme hedefi.</p>
+<div class="two-column">
+<div>
+<h4>Başlangıç Ölçümleri (0. Ay)</h4>
+<ul>
+<li>Aylık satış: $2,800</li>
+<li>Reklam maliyeti oranı: %70</li>
+<li>Organik sıralama: 4. sayfa</li>
+<li>Yorumlar: 5 adet</li>
+</ul>
+<h4>Uygulanan Strateji</h4>
+<ul>
+<li>🎯 Anahtar kelime optimizasyonu: "el yapımı seramik tabak"</li>
+<li>📺 Sponsorlu gösterim: Yeniden hedefleme reklamları</li>
+<li>🛡️ Marka savunması: Markalı aramalarda hakimiyet</li>
+<li>📱 Sosyal medya: Pinterest yaşam tarzı pinleri</li>
+</ul>
+</div>
+<div>
+<h4>6. Ay Sonuçları</h4>
+<ul>
+<li>Aylık satış: $30,000</li>
+<li>Reklam maliyeti: %22</li>
+<li>Organik sıralama: 1. sayfa</li>
+<li>Yorumlar: 75 adet</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<!-- Slide 7: Amazon Ads Case Study 2 -->
+<div class="slide"><img src="https://i.hizliresim.com/rdlgc17.png" style="position: absolute; top: 20px; left: 30px; max-width: 37.5px; z-index: 1000;"/>
+<div class="slide-number">7/38</div>
+<h2>Örnek Çalışma: Çorap Markası - Premium Atletik</h2>
+<div class="case-study">
+<h4>🧦 Spor Çorap Markası - Performans Serisi</h4>
+<p><strong>Durum:</strong> Yüksek kalite atletik çorap, kalabalık kategori</p>
+<div class="timeline">
+<div class="timeline-item">
+<div class="timeline-date">1. Ay</div>
+<div class="timeline-content">
+<strong>Araştırma Aşaması:</strong> Otomatik kampanyalar, anahtar kelime keşfi<br/>
+<em>Sonuç: 847 anahtar kelime tespit edildi</em>
+</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-date">2-3. Ay</div>
+<div class="timeline-content">
+<strong>Optimizasyon Aşaması:</strong> Tam eşleşme kampanyalar<br/>
+<em>En iyi anahtar kelimeler: "merino yün atletik çorap", "sıkıştırmalı koşu çorabı"</em>
+</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-date">4-6. Ay</div>
+<div class="timeline-content">
+<strong>Ölçekleme Aşaması:</strong> Sponsorlu markalar + DSP yeniden hedefleme<br/>
+<em>Kategoride baskın konum elde edildi</em>
+</div>
+</div>
+</div>
+<div class="success-box">
+<strong>Sonuçlar:</strong> $4,800 → $67,300 aylık satış | Reklam maliyeti: %67 → %19 | Organik sıra: #3 → #1
+                </div>
+</div>
+<div class="case-study">
+<h4>Türk D Markası - Ev Dekorasyonu</h4>
+<p><strong>Durum:</strong> Türkiye merkezli dekoratif yastık üreticisi, Amazon ABD'de marka farkındalığı artırma.</p>
+<div class="timeline">
+<div class="timeline-item">
+<div class="timeline-date">1. Ay</div>
+<div class="timeline-content">
+<strong>Araştırma:</strong> Otomatik kampanyalarla 950 anahtar kelime keşfi.<br/>
+<em>Sonuç: "bohem yastık kılıfı" anahtar kelimesi öne çıktı.</em>
+</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-date">2-3. Ay</div>
+<div class="timeline-content">
+<strong>Optimizasyon:</strong> Tam eşleşme ve Sponsorlu Marka kampanyaları.<br/>
+<em>En iyi anahtar kelimeler: "el dokuması yastık", "dekoratif yastık kılıfı".</em>
+</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-date">4-6. Ay</div>
+<div class="timeline-content">
+<strong>Ölçekleme:</strong> DSP ve Instagram influencer iş birliği.<br/>
+<em>Kategoride ilk 3 sıralama.</em>
+</div>
+</div>
+</div>
+<div class="success-box">
+<strong>Sonuçlar:</strong> Aylık satış: $4,000 → $55,000 | Reklam maliyeti: %68 → %20 | Organik sıra: #4 → #1
+                </div>
+<div class="info-box">
+<strong>Not:</strong> ABD pazarında dekoratif yastık kılıfları, özellikle bohem ve nötr tonlarda, 2025'te yüksek talep görüyor (pazar büyüklüğü tahmini: $4.5M).
+                </div>
+</div>
+</div>
+<!-- Slide 8: Amazon DSP Detaylı Giriş -->
+<div class="slide"><img src="https://i.hizliresim.com/rdlgc17.png" style="position: absolute; top: 20px; left: 30px; max-width: 37.5px; z-index: 1000;"/>
+<div class="slide-number">8/38</div>
+<h2>Amazon DSP - Talep Tarafı Platformu</h2>
+<p class="subtitle">Amazon'ın en güçlü ancak uzmanlık gerektiren reklamcılık aracı</p>
+<div class="two-column">
+<div>
+<h3>DSP Nedir?</h3>
+<ul>
+<li><span class="icon">🌐</span> Amazon dışı web sitelerinde reklam</li>
+<li><span class="icon">📱</span> Mobil uygulamalar içinde gösterim reklamları</li>
+<li><span class="icon">📺</span> Bağlantılı TV reklamları</li>
+<li><span class="icon">🎯</span> Gelişmiş hedef kitle belirleme</li>
+<li><span class="icon">🔄</span> Cihazlar arası yeniden hedefleme</li>
+<li><span class="icon">📈</span> Gerçek Zamanlı Analitik: Kampanya performansını anlık izleme ve optimize etme imkanı</li>
+</ul>
+</div>
+<div>
+<h3>Minimum Gereksinimler</h3>
+<div class="warning-box">
+<strong>⚠️ Kritik Şartlar:</strong><br/>
+                        • Esnek bütçe: $1/gün ile başlanabilir (self-service DSP)<br/>
+                        • Marka Kaydı zorunlu<br/>
+                        • Amazon Reklam Yöneticisi sertifikası önerilir (zorunlu değil)
+                    </div>
+<h3>DSP Başarı Faktörleri</h3>
+<ul>
+<li><strong>Doğru Hedefleme:</strong> Demografik, davranışsal ve coğrafi segmentasyonla yüksek dönüşüm.</li>
+<li><strong>Yaratıcı İçerik:</strong> Görsel ve video reklamlar kullanıcı etkileşimini artırır.</li>
+<li><strong>Sürekli Optimizasyon:</strong> A/B testi ve veri analizi ile kampanya verimliliği artar.</li>
+</ul>
+</div>
+</div>
+</div>
+<!-- Slide 9: DSP Case Study -->
+<div class="slide"><img src="https://i.hizliresim.com/rdlgc17.png" style="position: absolute; top: 20px; left: 30px; max-width: 37.5px; z-index: 1000;"/>
+<div class="slide-number">9/38</div>
+<h2>DSP Örnek Çalışma: Marka X - Peştemal Serisi</h2>
+<div class="case-study">
+<h4>🏖️ Premium Peştemal Markası - Yaz Sezonu Kampanyası</h4>
+<div class="two-column">
+<div>
+<h4>Kampanya Hedefi</h4>
+<p>Yaz sezonunda (Mart-Ağustos) premium peştemal satışlarını artırma</p>
+<h4>Hedef Kitle</h4>
+<ul>
+<li>🏖️ Plaj tatili planlayıcıları</li>
+<li>🧘 Yoga &amp; wellness severleri</li>
+<li>🏊 Havuz &amp; spa ziyaretçileri</li>
+<li>💰 Lüks seyahat alışverişçileri</li>
+</ul>
+<h4>DSP Yerleştirme Stratejisi</h4>
+<ul>
+<li>📱 Seyahat uygulamaları</li>
+<li>🏖️ Yaşam tarzı web siteleri</li>
+<li>📺 Bağlantılı TV reklamları</li>
+<li>📊 Amazon yeniden hedefleme</li>
+</ul>
+</div>
+<div>
+<h4>Kampanya Performansı</h4>
+<div class="chart-container">
+<div class="chart-bar">
+<div class="chart-label">Erişim</div>
+<div class="chart-value" style="width: 90%;">2.3M benzersiz kullanıcı</div>
+</div>
+<div class="chart-bar">
+<div class="chart-label">Tıklama Oranı</div>
+<div class="chart-value" style="width: 65%;">%1.2 (sektör ort: %0.7)</div>
+</div>
+<div class="chart-bar">
+<div class="chart-label">Dönüşüm Oranı</div>
+<div class="chart-value" style="width: 70%;">%2.8 (sektör ortalaması: %1.5)</div>
+</div>
+<div class="chart-bar">
+<div class="chart-label">Reklam Getirisi</div>
+<div class="chart-value" style="width: 85%;">4.8x</div>
+</div>
+<div class="chart-bar">
+<div class="chart-label">Marka Farkındalığı</div>
+<div class="chart-value" style="width: 75%;">+%47 artış</div>
+</div>
+</div>
+<div class="success-box">
+<strong>Sonuç:</strong><br/>
+                            • 6 aylık kampanya süresi<br/>
+                            • $125,000 DSP reklam harcama<br/>
+                            • $600,000 atfedilen satış<br/>
+                            • %340 yıllık büyüme
+                        </div>
+</div>
+</div>
+</div>
+<div class="case-study">
+<h4>Amerikalı E Müşterisi - Fitness Ekipmanları</h4>
+<p><strong>Kampanya Hedefi:</strong> Yaz sezonunda (Nisan-Eylül) yoga matı ve fitness aksesuarları satışlarını artırma.</p>
+<div class="two-column">
+<div>
+<h4>Hedef Kitle</h4>
+<ul>
+<li>🧘 Fitness ve yoga tutkunları</li>
+<li>🏋️ Evde egzersiz yapanlar</li>
+<li>💪 Spor salonu müdavimleri</li>
+</ul>
+<h4>DSP Yerleştirme Stratejisi</h4>
+<ul>
+<li>📱 Fitness uygulamaları</li>
+<li>🌐 Sağlık ve yaşam tarzı siteleri</li>
+<li>📺 YouTube fitness kanalları</li>
+<li>📊 Amazon yeniden hedefleme</li>
+</ul>
+</div>
+<div>
+<h4>Kampanya Performansı</h4>
+<ul>
+<li>Erişim: 3.1M benzersiz kullanıcı</li>
+<li>Tıklama Oranı: %1.5 (sektör ort: %0.8)</li>
+<li>Reklam Getirisi: 5.2x</li>
+<li>Marka Farkındalığı: +%50 artış</li>
+</ul>
+<div class="success-box">
+<strong>Sonuç:</strong><br/>
+                            • 6 aylık kampanya süresi<br/>
+                            • $150,000 DSP reklam harcaması<br/>
+                            • $780,000 atfedilen satış<br/>
+                            • %400 yıllık büyüme
+                        </div>
+</div>
+</div>
+</div>
+</div>
+<!-- Slide 10: DSP Case Study 2 -->
+<div class="slide"><img src="https://i.hizliresim.com/rdlgc17.png" style="position: absolute; top: 20px; left: 30px; max-width: 37.5px; z-index: 1000;"/>
+<div class="slide-number">10/38</div>
+<h2>DSP Örnek Çalışma: Marka Y - Ev Tekstili</h2>
+<div class="case-study">
+<h4>🏠 Ev Tekstili Markası - Nevresim Takımları DSP Kampanyası</h4>
+<div class="two-column">
+<div>
+<h4>Strateji</h4>
+<ul>
+<li>🎯 <strong>Hedef:</strong> Ev dekorasyonu ilgi alanları</li>
+<li>📱 <strong>Yerleşim:</strong> Pinterest, Instagram, ev tasarım siteleri</li>
+<li>🔄 <strong>Yeniden hedefleme:</strong> Amazon ürün sayfası ziyaretçileri</li>
+<li>📺 <strong>Video reklamlar:</strong> Yatak odası dönüşüm hikayeleri</li>
+</ul>
+<h4>Targeting Segmentleri</h4>
+<ul>
+<li>• Yeni ev sahipleri</li>
+<li>• Premium ev ürünleri alıcıları</li>
+<li>• Ev dekorasyon meraklıları</li>
+<li>• Rakip marka müşterileri</li>
+</ul>
+</div>
+<div>
+<h4>Sonuçlar (3 Aylık)</h4>
+<div class="metrics">
+<div class="metric">
+<div class="metric-value">1.8M</div>
+<div class="metric-label">Gösterim</div>
+</div>
+<div class="metric">
+<div class="metric-value">%1.4</div>
+<div class="metric-label">Tıklama Oranı</div>
+</div>
+<div class="metric">
+<div class="metric-value">$2.10</div>
+<div class="metric-label">Ortalama Tıklama Maliyeti</div>
+</div>
+<div class="metric">
+<div class="metric-value">5.2x</div>
+<div class="metric-label">Reklam Getirisi</div>
+</div>
+</div>
+<div class="success-box">
+<strong>Ana Kazanımlar:</strong><br/>
+                            • Amazon dışı trafikten %38 satış artışı<br/>
+                            • Marka bilinirliğinde %52 artış<br/>
+                            • Müşteri kazanım maliyeti %31 düşüş<br/>
+                            • Organik Amazon sıralamasında iyileşme<br/>
+                            • Sosyal medya entegrasyonu ile harici trafik artışı: %25
+                        </div>
+</div>
+</div>
+</div>
+<div class="case-study">
+<h4>Türk H Markası - Giyim</h4>
+<div class="two-column">
+<div>
+<h4>Strateji</h4>
+<ul>
+<li>🎯 <strong>Hedef:</strong> Moda trendlerini takip eden genç yetişkinler</li>
+<li>📱 <strong>Yerleşim:</strong> TikTok ve moda blogları</li>
+<li>🔄 <strong>Yeniden hedefleme:</strong> Amazon giyim sayfası ziyaretçileri</li>
+<li>📺 <strong>Video reklamlar:</strong> Günlük kullanım senaryoları</li>
+</ul>
+<h4>Targeting Segmentleri</h4>
+<ul>
+<li>• Genç moda tutkunları</li>
+<li>• Sürdürülebilir giyim alıcıları</li>
+<li>• Rakip marka müşterileri</li>
+</ul>
+</div>
+<div>
+<h4>Sonuçlar (3 Aylık)</h4>
+<div class="metrics">
+<div class="metric">
+<div class="metric-value">1.9M</div>
+<div class="metric-label">Gösterim</div>
+</div>
+<div class="metric">
+<div class="metric-value">%1.3</div>
+<div class="metric-label">Tıklama Oranı</div>
+</div>
+<div class="metric">
+<div class="metric-value">$2.00</div>
+<div class="metric-label">Ortalama Tıklama Maliyeti</div>
+</div>
+<div class="metric">
+<div class="metric-value">4.7x</div>
+<div class="metric-label">Reklam Getirisi</div>
+</div>
+</div>
+<div class="success-box">
+<strong>Ana Kazanımlar:</strong><br/>
+                            • Amazon dışı trafikten %35 satış artışı<br/>
+                            • Marka bilinirliğinde %48 artış<br/>
+                            • Müşteri kazanım maliyeti %25 düşüş<br/>
+                            • Organik sıralamada ilk 3'e yükselme
+                        </div>
+</div>
+</div>
+</div>
+</div>
+<!-- Slide 11: A/B Test Nedir -->
+<div class="slide"><img src="https://i.hizliresim.com/rdlgc17.png" style="position: absolute; top: 20px; left: 30px; max-width: 37.5px; z-index: 1000;"/>
+<div class="slide-number">11/38</div>
+<h2>A/B Test: Veri Odaklı Optimizasyon</h2>
+<div class="two-column">
+<div>
+<h3>A/B Test Nedir?</h3>
+<ul>
+<li><span class="icon">🧪</span> <strong>Tanım:</strong> İki farklı versiyonu karşılaştırma</li>
+<li><span class="icon">📊</span> <strong>Amaç:</strong> Hangisinin daha iyi performans gösterdiğini bulma</li>
+<li><span class="icon">🎯</span> <strong>Uygulama:</strong> Aynı anda iki versiyon test etme</li>
+<li><span class="icon">📈</span> <strong>Karar:</strong> İstatistiksel anlamlılık ile kazananı seçme</li>
+</ul>
+<div class="info-box">
+<strong>Basit Örnek:</strong><br/>
+                        Aynı ürün için iki farklı ana resim kullanarak hangisinin daha fazla tıklanma aldığını test etmek
+                    </div>
+</div>
+<div>
+<h3>Amazon'da A/B Test Alanları</h3>
+<ul>
+<li><span class="icon">🖼️</span> <strong>Ana resimler:</strong> Farklı açı ve stiller</li>
+<li><span class="icon">📝</span> <strong>Ürün başlıkları:</strong> Anahtar kelime sıralaması</li>
+<li><span class="icon">💰</span> <strong>Fiyat stratejileri:</strong> Farklı fiyat noktaları</li>
+<li><span class="icon">📋</span> <strong>Özellik listesi:</strong> Farklı madde sıralaması</li>
+<li><span class="icon">🎬</span> <strong>A+ içerik:</strong> Görsel düzen testleri</li>
+<li><span class="icon">📢</span> <strong>Reklam Metinleri:</strong> Farklı başlıklar ve açıklamalarla dönüşüm testi</li>
+</ul>
+<div class="warning-box">
+<strong>Önemli:</strong><br/>
+                        Amazon'da ana resim A/B testi yapmak için en az 1000 haftalık görüntüleme gerekir
+                    </div>
+</div>
+</div>
+</div>
+<!-- Slide 12: A/B Test Uygulama -->
+<div class="slide"><img src="https://i.hizliresim.com/rdlgc17.png" style="position: absolute; top: 20px; left: 30px; max-width: 37.5px; z-index: 1000;"/>
+<div class="slide-number">12/38</div>
+<h2>A/B Test Uygulama Örneği</h2>
+<div class="case-study">
+<h4>🧴 Peştemal A/B Test Çalışması</h4>
+<div class="two-column">
+<div>
+<h4>Test Detayları</h4>
+<ul>
+<li><strong>Ürün:</strong> Premium peştemal</li>
+<li><strong>Test süresi:</strong> 21 gün</li>
+<li><strong>Trafik bölümü:</strong> %50 - %50</li>
+<li><strong>Ölçüm kriteri:</strong> Tıklama oranı</li>
+</ul>
+<h4>Versiyon A: Ürün Odaklı</h4>
+<ul>
+<li>• Düz arka plan</li>
+<li>• Sadece peştemal</li>
+<li>• Ürün detayları vurgusu</li>
+</ul>
+<h4>Versiyon B: Yaşam Tarzı</h4>
+<ul>
+<li>• Plaj ortamı</li>
+<li>• Model kullanımı</li>
+<li>• Deneyim vurgusu</li>
+</ul>
+</div>
+<div>
+<h4>Sonuçlar</h4>
+<div class="chart-container">
+<div class="chart-bar">
+<div class="chart-label">Versiyon A - Tıklama Oranı</div>
+<div class="chart-value" style="width: 60%;">%2.1</div>
+</div>
+<div class="chart-bar">
+<div class="chart-label">Versiyon B - Tıklama Oranı</div>
+<div class="chart-value" style="width: 85%;">%3.7</div>
+</div>
+</div>
+<div class="success-box">
+<strong>Kazanan: Versiyon B</strong><br/>
+                            • %76 daha yüksek tıklama oranı<br/>
+                            • %43 daha fazla dönüşüm<br/>
+                            • Yaşam tarzı görselleri daha etkili<br/>
+                            • Aylık satışta $8,400 ek artış
+                        </div>
+<div class="info-box">
+<strong>Sonraki adım:</strong> Kazanan görseli kalıcı hale getirme ve yeni test alanları belirleme
+                        </div>
+</div>
+</div>
+</div>
+</div>
+<!-- Slide 13: Sosyal Medya A/B Test -->
+<div class="slide"><img src="https://i.hizliresim.com/rdlgc17.png" style="position: absolute; top: 20px; left: 30px; max-width: 37.5px; z-index: 1000;"/>
+<div class="slide-number">13/38</div>
+<h2>Sosyal Medya A/B Test Stratejileri</h2>
+<div class="content-grid">
+<div class="card">
+<h4><span class="icon">📱</span>Facebook/Instagram</h4>
+<p><strong>Test edilebilir öğeler:</strong></p>
+<ul style="margin-top: 10px;">
+<li>• Görsel vs video reklamlar</li>
+<li>• Farklı hedef kitle tanımları</li>
+<li>• Reklam metni çeşitleri</li>
+<li>• Harekete geçirici çağrı butonları</li>
+</ul>
+<div class="metrics" style="margin-top: 15px;">
+<div class="metric">
+<div class="metric-value">14 gün</div>
+<div class="metric-label">Min. test süresi</div>
+</div>
+</div>
+</div>
+<div class="card">
+<h4><span class="icon">🎵</span>TikTok</h4>
+<p><strong>Test edilebilir öğeler:</strong></p>
+<ul style="margin-top: 10px;">
+<li>• Video süreleri (15s vs 30s)</li>
+<li>• Müzik seçimleri</li>
+<li>• Hashtag stratejileri</li>
+<li>• Yayınlama zamanları</li>
+</ul>
+<div class="metrics" style="margin-top: 15px;">
+<div class="metric">
+<div class="metric-value">7 gün</div>
+<div class="metric-label">Min. test süresi</div>
+</div>
+</div>
+</div>
+<div class="card">
+<h4><span class="icon">📌</span>Pinterest</h4>
+<p><strong>Test edilebilir öğeler:</strong></p>
+<ul style="margin-top: 10px;">
+<li>• Pin tasarım stilleri</li>
+<li>• Açıklama uzunlukları</li>
+<li>• Pano kategorileri</li>
+<li>• Seasonal vs evergreen içerik</li>
+</ul>
+<div class="metrics" style="margin-top: 15px;">
+<div class="metric">
+<div class="metric-value">30 gün</div>
+<div class="metric-label">Min. test süresi</div>
+</div>
+</div>
+</div>
+<div class="card">
+<h4><span class="icon">🔍</span>Google Ads</h4>
+<p><strong>Test edilebilir öğeler:</strong></p>
+<ul style="margin-top: 10px;">
+<li>• Reklam başlıkları</li>
+<li>• Açıklama satırları</li>
+<li>• Landing page deneyimleri</li>
+<li>• Teklif stratejileri</li>
+</ul>
+<div class="metrics" style="margin-top: 15px;">
+<div class="metric">
+<div class="metric-value">10 gün</div>
+<div class="metric-label">Min. test süresi</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Slide 14: Brand Analytics Giriş (Enhanced) -->
+<div class="slide"><img src="https://i.hizliresim.com/rdlgc17.png" style="position: absolute; top: 20px; left: 30px; max-width: 37.5px; z-index: 1000;"/>
+<div class="slide-number">14/38</div>
+<h2>Amazon Marka Analitikleri</h2>
+<p class="subtitle">Ücretsiz ama paha biçilmez veri hazinesi</p>
+<div class="highlight-box">
+                Marka Kaydına sahip satıcılar için tamamen ücretsiz premium analitik platformu
+            </div>
+<h3>Ana Özellikler</h3>
+<div class="content-grid">
+<div class="card">
+<h4><span class="icon">🔍</span>Arama Terimleri Analizi</h4>
+<p>En çok aranan anahtar kelimeler, tıklama payı ve dönüşüm oranları.</p>
+</div>
+<div class="card">
+<h4><span class="icon">📊</span>Sepet Analizi</h4>
+<p>Hangi ürünlerin birlikte satın alındığını gösterir, çapraz satış fırsatlarını ortaya çıkarır.</p>
+</div>
+<div class="card">
+<h4><span class="icon">📈</span>Ürün Karşılaştırması</h4>
+<p>Rakiplerin fiyat, sıralama ve yorum performanslarıyla doğrudan karşılaştırma.</p>
+</div>
+<div class="card">
+<h4><span class="icon">🎯</span>Demografik Bilgiler</h4>
+<p>Müşteri yaşı, cinsiyeti, konumu ve satın alma alışkanlıkları.</p>
+</div>
+<div class="card">
+<h4><span class="icon">🔄</span>Tekrar Satın Alma Oranları</h4>
+<p>Müşteri sadakati ve tekrar satın alma eğilimlerini analiz eder.</p>
+</div>
+<div class="card">
+<h4><span class="icon">🌐</span>Pazar Payı Takibi</h4>
+<p>Kategorinizdeki pazar payınızı ve büyüme fırsatlarını izleyin.</p>
+</div>
+</div>
+<h3>Analitik Kullanım İpuçları</h3>
+<ul>
+<li><strong>Düzenli İzleme:</strong> Haftalık raporlarla trendleri analiz edin, ani değişikliklere hızlı tepki verin.</li>
+<li><strong>Rakip Takibi:</strong> Rakiplerin fiyatlandırma, promosyon ve ürün stratejilerini izleyin.</li>
+<li><strong>Müşteri Segmentasyonu:</strong> Demografik verilere göre hedef kitleleri özelleştirin, reklamları kişiselleştirin.</li>
+<li><strong>Çapraz Satış Stratejileri:</strong> Sepet analiziyle tamamlayıcı ürünleri paket olarak sunun.</li>
+<li><strong>Sezonsal Planlama:</strong> Arama terimlerini analiz ederek sezonsal taleplere hazırlanın.</li>
+</ul>
+</div>
+<!-- Slide 15: Sosyal Medya Büyüme Oranları -->
+<div class="slide"><img src="https://i.hizliresim.com/rdlgc17.png" style="position: absolute; top: 20px; left: 30px; max-width: 37.5px; z-index: 1000;"/>
+<div class="slide-number">15/38</div>
+<h2>Sosyal Medya Platformları - 2025 Büyüme Analizi</h2>
+<div class="chart-container">
+<h3>Platform Kullanıcı Büyümesi (Yıllık %)</h3>
+<div class="chart-bar">
+<div class="chart-label">TikTok</div>
+<div class="chart-value" style="width: 95%;">+%12.5 (1.9B kullanıcı)</div>
+</div>
+<div class="chart-bar">
+<div class="chart-label">Instagram</div>
+<div class="chart-value" style="width: 70%;">+%7.2 (2.6B kullanıcı)</div>
+</div>
+<div class="chart-bar">
+<div class="chart-label">Pinterest</div>
+<div class="chart-value" style="width: 60%;">+%5.8 (550M kullanıcı)</div>
+</div>
+<div class="chart-bar">
+<div class="chart-label">Facebook</div>
+<div class="chart-value" style="width: 45%;">+%1.8 (3.1B kullanıcı)</div>
+</div>
+<div class="chart-bar">
+<div class="chart-label">YouTube</div>
+<div class="chart-value" style="width: 55%;">+%4.2 (2.8B kullanıcı)</div>
+</div>
+</div>
+<div class="stats-container">
+<div class="stat-item">
+<span class="stat-number">73%</span>
+<span class="stat-label">E-ticaret keşfi sosyal medyada başlıyor</span>
+</div>
+<div class="stat-item">
+<span class="stat-number">$1.2T</span>
+<span class="stat-label">Sosyal ticaret pazar büyüklüğü (2025 tahmini)</span>
+</div>
+<div class="stat-item">
+<span class="stat-number">2.5x</span>
+<span class="stat-label">Sosyal medyadan gelen trafik dönüşüm oranı</span>
+</div>
+</div>
+<div class="info-box">
+                • 🛒 <strong>TikTok Shop Entegrasyonu:</strong> Kullanıcılar TikTok'tan ayrılmadan Amazon hesabıyla doğrudan alışveriş yapabilir, dönüşüm oranlarını artırır.
+            </div>
+</div>
+<!-- Slide 16: Platform Detaylı Analizi -->
+<div class="slide"><img src="https://i.hizliresim.com/rdlgc17.png" style="position: absolute; top: 20px; left: 30px; max-width: 37.5px; z-index: 1000;"/>
+<div class="slide-number">16/38</div>
+<h2>Platform Bazlı Strateji Analizi</h2>
+<div class="platform-comparison">
+<div class="platform facebook">
+<h4>🔵 Meta (Facebook + Instagram)</h4>
+<p><strong>Güçlü Yanları:</strong></p>
+<ul>
+<li>• En gelişmiş hedefleme seçenekleri</li>
+<li>• Benzer hedef kitleler</li>
+<li>• Video içerik hakimiyeti</li>
+<li>• Entegre alışveriş özellikleri</li>
+</ul>
+<div class="metrics">
+<div class="metric">
+<div class="metric-value">$1.89</div>
+<div class="metric-label">Ortalama tıklama maliyeti</div>
+</div>
+<div class="metric">
+<div class="metric-value">%1.85</div>
+<div class="metric-label">Tıklama oranı</div>
+</div>
+</div>
+</div>
+<div class="platform tiktok">
+<h4>🎵 TikTok</h4>
+<p><strong>Güçlü Yanları:</strong></p>
+<ul>
+<li>• En yüksek etkileşim oranı</li>
+<li>• Z kuşağı hakimiyeti</li>
+<li>• Viral potansiyel</li>
+<li>• Otantik içerik tercihi</li>
+</ul>
+<div class="metrics">
+<div class="metric">
+<div class="metric-value">$0.94</div>
+<div class="metric-label">Ortalama tıklama maliyeti</div>
+</div>
+<div class="metric">
+<div class="metric-value">%2.63</div>
+<div class="metric-label">Tıklama oranı</div>
+</div>
+</div>
+</div>
+<div class="platform pinterest">
+<h4>📌 Pinterest</h4>
+<p><strong>Güçlü Yanları:</strong></p>
+<ul>
+<li>• Satın alma niyeti en yüksek</li>
+<li>• Uzun vadeli içerik değeri</li>
+<li>• Görsel ürün keşfi</li>
+<li>• Kadın demografisi gücü</li>
+</ul>
+<div class="metrics">
+<div class="metric">
+<div class="metric-value">$1.56</div>
+<div class="metric-label">Ortalama tıklama maliyeti</div>
+</div>
+<div class="metric">
+<div class="metric-value">%1.22</div>
+<div class="metric-label">Tıklama oranı</div>
+</div>
+</div>
+</div>
+<div class="platform google">
+<h4>🔍 Google Ads</h4>
+<p><strong>Güçlü Yanları:</strong></p>
+<ul>
+<li>• En yüksek satın alma niyeti</li>
+<li>• Arama + gösterim ağı</li>
+<li>• YouTube entegrasyonu</li>
+<li>• Performans maksimum kampanyalar</li>
+</ul>
+<div class="metrics">
+<div class="metric">
+<div class="metric-value">$2.69</div>
+<div class="metric-label">Ortalama tıklama maliyeti</div>
+</div>
+<div class="metric">
+<div class="metric-value">%3.17</div>
+<div class="metric-label">Tıklama oranı</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Slide 17: Sosyal Medya Case Study -->
+<div class="slide"><img src="https://i.hizliresim.com/rdlgc17.png" style="position: absolute; top: 20px; left: 30px; max-width: 37.5px; z-index: 1000;"/>
+<div class="slide-number">17/38</div>
+<h2>Sosyal Medya Örnek Çalışma: Ev Tekstili Çoklu Kanal</h2>
+<div class="case-study">
+<h4>🏠 Ev Tekstili Markası - Çok Kanallı Kampanya</h4>
+<p><strong>Hedef:</strong> 6 ay içinde Amazon ABD'de yeni ürün lansmanı + marka farkındalığı</p>
+<div class="timeline">
+<div class="timeline-item">
+<div class="timeline-date">Aşama 1</div>
+<div class="timeline-content">
+<strong>Pinterest:</strong> Yaşam tarzı içeriği + oda ilhamı<br/>
+<em>80 pin, 150K gösterim, %2.1 tıklama oranı</em>
+</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-date">Aşama 2</div>
+<div class="timeline-content">
+<strong>Instagram:</strong> Kullanıcı tarafından oluşturulan içerik + etkileyici ortaklıkları<br/>
+<em>12 mikro-etkileyici, 450K erişim, %3.8 etkileşim</em>
+</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-date">Aşama 3</div>
+<div class="timeline-content">
+<strong>TikTok:</strong> Perde arkası içeriği + ürün tanıtımları<br/>
+<em>5 video viral oldu, 1.2M görüntüleme, 85K web sitesi ziyareti</em>
+</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-date">Aşama 4</div>
+<div class="timeline-content">
+<strong>Google Ads:</strong> Sosyal ziyaretçileri Amazon'a yeniden hedefleme<br/>
+<em>Amazon Atıf bağlantıları, %14 dönüşüm oranı</em>
+</div>
+</div>
+</div>
+<div class="success-box">
+<strong>Toplam Sonuç:</strong> $45K sosyal reklam harcaması → $340K Amazon satışı (Reklam getirisi: 7.6x) | Amazon organik sıralama: 23. sıra → 3. sıra
+                </div>
+</div>
+</div>
+<!-- Slide 18: Amazon Attribution -->
+<div class="slide"><img src="https://i.hizliresim.com/rdlgc17.png" style="position: absolute; top: 20px; left: 30px; max-width: 37.5px; z-index: 1000;"/>
+<div class="slide-number">18/38</div>
+<h2>Amazon Attribution - Harici Trafik Takibi</h2>
+<div class="two-column">
+<div>
+<h3>Amazon Attribution Nedir?</h3>
+<ul>
+<li><span class="icon">🔗</span> Amazon dışından gelen trafik takibi</li>
+<li><span class="icon">📊</span> Sosyal medya yatırım getirisi ölçümü</li>
+<li><span class="icon">🎯</span> Platform arası kampanya optimizasyonu</li>
+<li><span class="icon">🏆</span> Organik sıralama artışı (algoritma sinyali)</li>
+</ul>
+<div class="info-box">
+<strong>Önemli Fayda:</strong><br/>
+                        Harici trafik Amazon'a pozitif sinyal gönderir ve organik sıralamayı iyileştirir.
+                    </div>
+</div>
+<div>
+<h3>Takip Ölçümleri</h3>
+<ul>
+<li><span class="icon">👁️</span> <strong>Detay Sayfa Görüntüleme:</strong> Ürün sayfası görüntüleme</li>
+<li><span class="icon">🛒</span> <strong>Sepete Ekleme:</strong> Sepete ekleme oranı</li>
+<li><span class="icon">💰</span> <strong>Satın Alma:</strong> 14 gün atıf penceresi</li>
+<li><span class="icon">📈</span> <strong>Marka Hale Etkisi:</strong> Marka içi çapraz satış</li>
+</ul>
+<div class="chart-container">
+<h4>Atıf Penceresi Analizi</h4>
+<div class="chart-bar">
+<div class="chart-label">Aynı Gün</div>
+<div class="chart-value" style="width: 45%;">%45 dönüşüm</div>
+</div>
+<div class="chart-bar">
+<div class="chart-label">1-3 Gün</div>
+<div class="chart-value" style="width: 35%;">%35 dönüşüm</div>
+</div>
+<div class="chart-bar">
+<div class="chart-label">4-14 Gün</div>
+<div class="chart-value" style="width: 20%;">%20 dönüşüm</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Slide 19: Yapay Zeka ile E-Ticarette Dönüşüm -->
+<div class="slide"><img src="https://i.hizliresim.com/rdlgc17.png" style="position: absolute; top: 20px; left: 30px; max-width: 37.5px; z-index: 1000;"/>
+<div class="slide-number">19/38</div>
+<h2>Yapay Zeka ile E-Ticarette Dönüşüm</h2>
+<div class="highlight-box">
+                2025'te yapay zeka kullanmayan Amazon satıcıları, 10 yıl önceki teknoloji ile rekabet etmeye çalışıyor
+            </div>
+<div class="stats-container">
+<div class="stat-item">
+<span class="stat-number">45%</span>
+<span class="stat-label">Amazon satıcıları ileri düzey yapay zeka araçlarını kullanmıyor</span>
+</div>
+<div class="stat-item">
+<span class="stat-number">3.5x</span>
+<span class="stat-label">Yapay zeka kullanan satıcıların büyüme oranı</span>
+</div>
+<div class="stat-item">
+<span class="stat-number">-65%</span>
+<span class="stat-label">Operasyonel iş yükü azalması</span>
+</div>
+<div class="stat-item">
+<span class="stat-number">+47%</span>
+<span class="stat-label">Dönüşüm oranı artışı</span>
+</div>
+</div>
+<div class="content-grid">
+<div class="card">
+<h4><span class="icon">📝</span>İçerik Oluşturma</h4>
+<ul>
+<li><strong>ChatGPT:</strong> Ürün açıklamaları</li>
+<li><strong>Claude:</strong> A+ İçerik yazımı</li>
+<li><strong>Jasper:</strong> Reklam metinleri</li>
+</ul>
+</div>
+<div class="card">
+<h4><span class="icon">🎨</span>Görsel İçerik</h4>
+<ul>
+<li><strong>Midjourney:</strong> Yaşam tarzı görselleri</li>
+<li><strong>DALL-E:</strong> Ürün maketleri</li>
+<li><strong>Canva AI:</strong> İnfografikler</li>
+</ul>
+</div>
+<div class="card">
+<h4><span class="icon">📊</span>Analitik &amp; Araştırma</h4>
+<ul>
+<li><strong>Helium 10 AI:</strong> Anahtar kelime araştırması</li>
+<li><strong>Jungle Scout AI:</strong> Pazar analizi</li>
+<li><strong>Sellics AI:</strong> Reklam optimizasyonu</li>
+</ul>
+</div>
+<div class="card">
+<h4><span class="icon">🤖</span>Otomasyon</h4>
+<ul>
+<li><strong>Zapier AI:</strong> İş akışı otomasyonu</li>
+<li><strong>Feedvisor:</strong> Fiyatlandırma algoritmaları</li>
+<li><strong>SellerApp AI:</strong> Stok tahmini</li>
+</ul>
+</div>
+</div>
+<h3>Üçüncü Taraf Araçların Avantajları</h3>
+<ul>
+<li><strong>Helium 10 AI:</strong> Anahtar kelime araştırması, rakip analizi ve ürün trendlerini belirlemek için kapsamlı bir araç. Satıcıların pazar fırsatlarını hızlıca keşfetmesini sağlar.</li>
+<li><strong>Jungle Scout AI:</strong> Pazar analizi ve ürün araştırma platformu. Yeni ürün lansmanları için talep tahmini ve rekabet analizi sunar.</li>
+<li><strong>Sellics AI:</strong> Reklam optimizasyonu ve karlılık analizi için entegre bir çözüm. Kampanya performansını gerçek zamanlı izler.</li>
+<li><strong>Zapier AI:</strong> İş akışlarını otomatikleştirir, farklı platformlar arasında veri akışını sağlar. Zaman tasarrufu için idealdir.</li>
+<li><strong>Feedvisor:</strong> Yapay zeka tabanlı fiyatlandırma optimizasyonu. Dinamik fiyatlandırma ile kar marjlarını artırır.</li>
+<li><strong>SellerApp AI:</strong> Stok tahmini ve satış analitiği için gelişmiş veri analizi sunar. Envanter yönetimini optimize eder.</li>
+</ul>
+<div class="chart-container">
+<h4>Yapay Zeka Araçlarının Zaman Tasarrufu Etkisi</h4>
+<div class="chart-bar">
+<div class="chart-label">İçerik Oluşturma</div>
+<div class="chart-value" style="width: 90%; background: #1E90FF;">%90</div>
+</div>
+<div class="chart-bar">
+<div class="chart-label">Görsel İçerik</div>
+<div class="chart-value" style="width: 85%; background: #32CD32;">%85</div>
+</div>
+<div class="chart-bar">
+<div class="chart-label">Analitik &amp; Araştırma</div>
+<div class="chart-value" style="width: 80%; background: #FFD700;">%80</div>
+</div>
+<div class="chart-bar">
+<div class="chart-label">Otomasyon</div>
+<div class="chart-value" style="width: 95%; background: #FF4500;">%95</div>
+</div>
+</div>
+</div>
+<!-- Slide 20: YZ Uygulama Örneği -->
+<div class="slide"><img src="https://i.hizliresim.com/rdlgc17.png" style="position: absolute; top: 20px; left: 30px; max-width: 37.5px; z-index: 1000;"/>
+<div class="slide-number">20/38</div>
+<h2>Yapay Zeka Uygulama Örneği</h2>
+<div class="case-study">
+<h4>🧴 Marka Z - Yapay Zeka ile İçerik Optimizasyonu</h4>
+<div class="two-column">
+<div>
+<h4>Önceki Durum (Manuel Süreç)</h4>
+<ul>
+<li>• Ürün açıklaması yazımı: 3 saat</li>
+<li>• Görsel hazırlık: 2 gün</li>
+<li>• Anahtar kelime araştırması: 4 saat</li>
+<li>• A+ içerik tasarımı: 1 hafta</li>
+<li>• Toplam maliyet: $800/ürün</li>
+</ul>
+<h4>Sonraki Durum (YZ ile)</h4>
+<ul>
+<li>• Ürün açıklaması: 15 dakika (ChatGPT)</li>
+<li>• Görsel oluşturma: 2 saat (Midjourney)</li>
+<li>• Anahtar kelime: 30 dakika (Helium 10 AI)</li>
+<li>• A+ içerik: 1 gün (AI destekli)</li>
+<li>• Toplam maliyet: $50/ürün</li>
+</ul>
+</div>
+<div>
+<h4>Performans Sonuçları</h4>
+<div class="chart-container">
+<div class="chart-bar">
+<div class="chart-label">Zaman Tasarrufu</div>
+<div class="chart-value" style="width: 90%;">%94 azalma</div>
+</div>
+<div class="chart-bar">
+<div class="chart-label">Maliyet Tasarrufu</div>
+<div class="chart-value" style="width: 85%;">%94 azalma</div>
+</div>
+<div class="chart-bar">
+<div class="chart-label">Tıklama Oranı</div>
+<div class="chart-value" style="width: 75%;">%23 artış</div>
+</div>
+<div class="chart-bar">
+<div class="chart-label">Dönüşüm Oranı</div>
+<div class="chart-value" style="width: 80%;">%18 artış</div>
+</div>
+</div>
+<div class="success-box">
+<strong>6 Aylık Sonuç:</strong><br/>
+                            • 15 ürün için yapay zeka kullanımı<br/>
+                            • $11,250 tasarruf<br/>
+                            • 320 saat zaman kazanımı<br/>
+                            • %31 genel satış artışı
+                        </div>
+</div>
+</div>
+</div>
+</div>
+<!-- Slide 21: Türk Markalarının En Büyük Hataları -->
+<div class="slide"><img src="https://i.hizliresim.com/rdlgc17.png" style="position: absolute; top: 20px; left: 30px; max-width: 37.5px; z-index: 1000;"/>
+<div class="slide-number">21/38</div>
+<h2>ABD'de Türk Markalarının En Büyük Hataları</h2>
+<div class="content-grid">
+<div class="card">
+<h4><span class="icon">💸</span>HATA #1: Reklam Bütçesi Yakma</h4>
+<div class="warning-box" style="margin: 15px 0;">
+<strong>SORUN:</strong> Geniş eşleşme anahtar kelimeler ile sınırsız bütçe
+                    </div>
+<p><strong>ÇÖZÜM:</strong></p>
+<ul>
+<li>• Tam eşleşme ile başlayın</li>
+<li>• Günlük bütçe sınırları koyun</li>
+<li>• Negatif anahtar kelime listeleri</li>
+<li>• Düzenli teklif ayarlamaları</li>
+</ul>
+<div class="success-box" style="margin-top: 15px;">
+<strong>Gerçek Örnek:</strong> Havlu markası ilk ayda $8,000 yakıp 2 satış aldı. Strateji değişikliği sonrası aynı bütçe ile 47 satış.
+                    </div>
+</div>
+<div class="card">
+<h4><span class="icon">📦</span>HATA #2: Stok Yönetimi Felaketi</h4>
+<div class="warning-box" style="margin: 15px 0;">
+<strong>SORUN:</strong> Sezonsal talebi yanlış hesaplama
+                    </div>
+<p><strong>ÇÖZÜM:</strong></p>
+<ul>
+<li>• Geçmiş veri analizi</li>
+<li>• Güvenlik stoğu hesaplamaları</li>
+<li>• Tedarikçi yedek planları</li>
+<li>• Teslimat süresi optimizasyonu</li>
+</ul>
+<div class="success-box" style="margin-top: 15px;">
+<strong>Gerçek Örnek:</strong> Peştemal markası yaz sezonunda 6 hafta stok tüketti, $180K satış kaybetti.
+                    </div>
+</div>
+<div class="card">
+<h4><span class="icon">🔍</span>HATA #3: Anahtar Kelime Aşırı Doldurma</h4>
+<div class="warning-box" style="margin: 15px 0;">
+<strong>SORUN:</strong> İlgisiz anahtar kelimeler ile doldurma
+                    </div>
+<p><strong>ÇÖZÜM:</strong></p>
+<ul>
+<li>• Doğal anahtar kelime yerleşimi</li>
+<li>• Kullanıcı niyeti eşleştirme</li>
+<li>• A/B test yaklaşımı</li>
+<li>• Performans izleme</li>
+</ul>
+<div class="success-box" style="margin-top: 15px;">
+<strong>Gerçek Örnek:</strong> Çorap markası başlıkta 15 anahtar kelime kullanıyordu. 7'ye düşürünce dönüşüm %34 arttı.
+                    </div>
+</div>
+</div>
+</div>
+<!-- Slide 22: Amazon İade Yönetimi -->
+<div class="slide"><img src="https://i.hizliresim.com/rdlgc17.png" style="position: absolute; top: 20px; left: 30px; max-width: 37.5px; z-index: 1000;"/>
+<div class="slide-number">22/38</div>
+<h2>Amazon İade Yönetimi - Tekstil İçin Kritik</h2>
+<div class="two-column">
+<div>
+<h3>İade Oranları (Kategori Bazlı)</h3>
+<div class="chart-container">
+<div class="chart-bar">
+<div class="chart-label">Giyim &amp; Aksesuar</div>
+<div class="chart-value" style="width: 95%;">%20-30</div>
+</div>
+<div class="chart-bar">
+<div class="chart-label">Ev Tekstili</div>
+<div class="chart-value" style="width: 75%;">%15-25</div>
+</div>
+<div class="chart-bar">
+<div class="chart-label">Ayakkabı</div>
+<div class="chart-value" style="width: 85%;">%18-28</div>
+</div>
+<div class="chart-bar">
+<div class="chart-label">Elektronik</div>
+<div class="chart-value" style="width: 45%;">%8-12</div>
+</div>
+</div>
+<div class="warning-box">
+<strong>Tekstil riski:</strong> Yüksek iade oranları kar marjını ciddi şekilde etkiler
+                    </div>
+</div>
+<div>
+<h3>İade Azaltma Stratejileri</h3>
+<ul>
+<li><span class="icon">📏</span> <strong>Beden Tabloları:</strong> Detaylı ve doğru ölçümler</li>
+<li><span class="icon">🎨</span> <strong>Renk Doğruluğu:</strong> Profesyonel ürün fotoğrafları</li>
+<li><span class="icon">📝</span> <strong>Malzeme Bilgisi:</strong> Kumaş özelliklerini açık belirtme</li>
+<li><span class="icon">🧼</span> <strong>Bakım Talimatları:</strong> Yıkama ve bakım rehberi</li>
+<li><span class="icon">⭐</span> <strong>Müşteri Yorumları:</strong> Proaktif yorum yönetimi</li>
+</ul>
+<div class="case-study">
+<h4>Başarı Örneği: Bornoz Markası</h4>
+<p><strong>Öncesi:</strong> %28 iade oranı</p>
+<p><strong>Uyguladıkları:</strong></p>
+<ul>
+<li>• 360° ürün videoları</li>
+<li>• Model üzerinde boyut gösterimi</li>
+<li>• Pamuk kalitesi açıklaması</li>
+<li>• Yıkama sonrası büzülme bilgisi</li>
+</ul>
+<p><strong>Sonrası:</strong> %12 iade oranı (-%57)</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Slide 23: Yorum Stratejileri -->
+<div class="slide"><img src="https://i.hizliresim.com/rdlgc17.png" style="position: absolute; top: 20px; left: 30px; max-width: 37.5px; z-index: 1000;"/>
+<div class="slide-number">23/38</div>
+<h2>Amazon Yorum Stratejileri</h2>
+<div class="two-column">
+<div>
+<h3>Yorum Toplama Teknikleri</h3>
+<ul>
+<li><span class="icon">📧</span> <strong>Follow-up E-postalar:</strong> Teslimat sonrası otomatik</li>
+<li><span class="icon">📦</span> <strong>Ürün Kartları:</strong> Kutuda QR kod ile yorum bağlantısı</li>
+<li><span class="icon">🎁</span> <strong>Değer Katma:</strong> Bakım rehberi + yorum ricası</li>
+<li><span class="icon">⏰</span> <strong>Zamanlama:</strong> Ürünü kullanım sonrası ideal süre</li>
+</ul>
+<div class="warning-box">
+<strong>DİKKAT:</strong><br/>
+                        Ücretli yorum, sahte yorum, incentive'li yorum kesinlikle YASAK. Amazon'ın TOS'unu ihlal eder.
+                    </div>
+</div>
+<div>
+<h3>Negatif Yorum Yönetimi</h3>
+<ul>
+<li><span class="icon">⚡</span> <strong>Hızlı Yanıt:</strong> 24 saat içinde yanıtlama</li>
+<li><span class="icon">🤝</span> <strong>Empatik Yaklaşım:</strong> Müşteriyi anlayışla karşılama</li>
+<li><span class="icon">🔧</span> <strong>Çözüm Önerme:</strong> Konkret çözüm yolları</li>
+<li><span class="icon">📞</span> <strong>Özel İletişim:</strong> Ciddi sorunlarda direkt iletişim</li>
+</ul>
+<div class="success-box">
+<strong>İyi Yorum Yanıtı Örneği:</strong><br/>
+                        "Memnuniyetsizliğinizi anlıyoruz. Bu durum bizim için de üzücü. Sorunu derhal çözmek için size özel e-posta attık. Müşteri memnuniyeti önceliğimizdir."
+                    </div>
+<div class="chart-container">
+<h4>Yorum Puan Hedefleri</h4>
+<div class="chart-bar">
+<div class="chart-label">4.5+ Puan</div>
+<div class="chart-value" style="width: 95%;">İdeal hedef</div>
+</div>
+<div class="chart-bar">
+<div class="chart-label">4.0-4.4 Puan</div>
+<div class="chart-value" style="width: 70%;">Kabul edilebilir</div>
+</div>
+<div class="chart-bar">
+<div class="chart-label">3.5-3.9 Puan</div>
+<div class="chart-value" style="width: 45%;">Risk altında</div>
+</div>
+<div class="chart-bar">
+<div class="chart-label">3.5 Altı</div>
+<div class="chart-value" style="width: 20%;">Acil müdahale</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Slide 24: Shopify + Amazon Entegrasyonu -->
+<div class="slide"><img src="https://i.hizliresim.com/rdlgc17.png" style="position: absolute; top: 20px; left: 30px; max-width: 37.5px; z-index: 1000;"/>
+<div class="slide-number">24/38</div>
+<h2>Shopify + Amazon Entegrasyonu</h2>
+<div class="highlight-box">
+                Kendi e-ticaret siteniz + Amazon = Maksimum büyüme potansiyeli
+            </div>
+<div class="two-column">
+<div>
+<h3>Entegrasyon Avantajları</h3>
+<ul>
+<li><span class="icon">📊</span> <strong>Merkezi Envanter:</strong> Tek noktadan stok yönetimi</li>
+<li><span class="icon">🔄</span> <strong>Otomatik Senkronizasyon:</strong> Fiyat ve stok güncellemeleri</li>
+<li><span class="icon">📈</span> <strong>Çoklu Kanal Satış:</strong> Aynı ürün, farklı platformlar</li>
+<li><span class="icon">💰</span> <strong>Kar Marjı Optimizasyonu:</strong> Platform bazlı fiyatlandırma</li>
+</ul>
+<div class="info-box">
+<strong>Önerilen Uygulamalar:</strong><br/>
+                        • Amazon by Codisto<br/>
+                        • Sellbrite<br/>
+                        • ChannelAdvisor<br/>
+                        • Zentail
+                    </div>
+</div>
+<div>
+<h3>Strateji Önerileri</h3>
+<ul>
+<li><span class="icon">🎯</span> <strong>Farklı Hedef Kitleler:</strong> Shopify'da premium, Amazon'da hacim</li>
+<li><span class="icon">🎁</span> <strong>Özel Teklifler:</strong> Platform özel kampanyalar</li>
+<li><span class="icon">📧</span> <strong>E-posta Pazarlama:</strong> Shopify müşterilerini Amazon'a yönlendirme</li>
+<li><span class="icon">🔒</span> <strong>Marka Koruması:</strong> Amazon'da marka kontrolü</li>
+</ul>
+<div class="case-study">
+<h4>Başarı Örneği</h4>
+<p>Ev tekstili markası 6 ayda:</p>
+<ul>
+<li>• Shopify: $45K aylık satış (%35 kar marjı)</li>
+<li>• Amazon: $120K aylık satış (%18 kar marjı)</li>
+<li>• Toplam: $165K aylık satış</li>
+<li>• Çoklu kanal sinerjisi ile %23 büyüme</li>
+</ul>
+</div>
+</div>
+</div>
+<h3>Entegrasyon Araçlarının İşlevleri</h3>
+<ul>
+<li><strong>Amazon by Codisto:</strong> Amazon ve Shopify arasında gerçek zamanlı envanter ve sipariş senkronizasyonu sağlar. Çok kanallı satış yönetimini kolaylaştırır.</li>
+<li><strong>Sellbrite:</strong> Çoklu pazar yerlerinde envanter ve sipariş yönetimini merkezileştirir. Hata oranlarını azaltır.</li>
+<li><strong>ChannelAdvisor:</strong> Büyük ölçekli satıcılar için kapsamlı bir platform. Amazon, Shopify ve diğer kanallarda operasyonları optimize eder.</li>
+<li><strong>Zentail:</strong> Otomatik fiyatlandırma ve liste optimizasyonu ile çok kanallı satışları güçlendirir. Kullanımı kolay arayüz sunar.</li>
+</ul>
+</div>
+<!-- Slide 25: 30-60-90 Gün Aksiyon Planı -->
+<div class="slide"><img src="https://i.hizliresim.com/rdlgc17.png" style="position: absolute; top: 20px; left: 30px; max-width: 37.5px; z-index: 1000;"/>
+<div class="slide-number">25/38</div>
+<h2>30-60-90 Gün Aksiyon Planı</h2>
+<div class="three-column">
+<div class="card">
+<h4><span class="icon">🚀</span>İlk 30 Gün: Temel</h4>
+<ul>
+<li>✅ Marka Kaydı tamamla</li>
+<li>✅ Amazon Analitik kurulumu</li>
+<li>✅ Rekabet analizi başlat</li>
+<li>✅ Yapay zeka araçları aboneliği</li>
+<li>✅ Reklam kampanya yapısı kur</li>
+<li>✅ Harici trafik stratejisi</li>
+<li>✅ İlk A/B testlerini başlatın</li>
+<li>✅ Anahtar kelimeleri Hope, Best, ve Negative kategorilerine ayırarak reklam kampanyalarını optimize edin</li>
+</ul>
+<div class="metrics">
+<div class="metric">
+<div class="metric-value">Hedef</div>
+<div class="metric-label">$15K satış</div>
+</div>
+</div>
+</div>
+<div class="card">
+<h4><span class="icon">📈</span>31-60 Gün: Büyüme</h4>
+<ul>
+<li>🎯 DSP kampanyaları başlat</li>
+<li>🎯 Sosyal medya entegrasyonu</li>
+<li>🎯 A+ İçerik optimize et</li>
+<li>🎯 Stok ölçeklendirme</li>
+<li>🎯 Yorum toplama stratejisi</li>
+<li>🎯 Çapraz satış uygulaması</li>
+<li>🎯 Harici trafik için Google Ads kampanyaları başlatın</li>
+</ul>
+<div class="metrics">
+<div class="metric">
+<div class="metric-value">Hedef</div>
+<div class="metric-label">$35K satış</div>
+</div>
+</div>
+</div>
+<div class="card">
+<h4><span class="icon">🏆</span>61-90 Gün: Optimizasyon</h4>
+<ul>
+<li>🏅 Tam otomasyon kurulumu</li>
+<li>🏅 Uluslararası genişleme hazırlığı</li>
+<li>🏅 Gelişmiş yapay zeka analitikleri</li>
+<li>🏅 Marka koruma önlemleri</li>
+<li>🏅 Ortaklık fırsatları</li>
+<li>🏅 Ölçek planlaması</li>
+<li>🏅 Amazon Attribution ile harici trafik analizini güçlendirin</li>
+</ul>
+<div class="metrics">
+<div class="metric">
+<div class="metric-value">Hedef</div>
+<div class="metric-label">$65K satış</div>
+</div>
+</div>
+</div>
+</div>
+<div class="success-box">
+<strong>90 Gün Sonrası:</strong> Sürdürülebilir büyüme sistemi kurulmuş, rekabet avantajı elde edilmiş, ölçek için hazır platform
+            </div>
+</div>
+<!-- Slide 26: Yatırım Gereksinimleri -->
+<div class="slide"><img src="https://i.hizliresim.com/rdlgc17.png" style="position: absolute; top: 20px; left: 30px; max-width: 37.5px; z-index: 1000;"/>
+<div class="slide-number">26/38</div>
+<h2>Yatırım Gereksinimleri - Gerçekçi Bütçe Planlama</h2>
+<div class="two-column">
+<div>
+<h3>💰 İlk 6 Ay Bütçe Dağılımı</h3>
+<div class="chart-container">
+<div class="chart-bar">
+<div class="chart-label">Envanter</div>
+<div class="chart-value" style="width: 90%;">$25,000 (%50)</div>
+</div>
+<div class="chart-bar">
+<div class="chart-label">Amazon Reklamları</div>
+<div class="chart-value" style="width: 70%;">$15,000 (%30)</div>
+</div>
+<div class="chart-bar">
+<div class="chart-label">Harici Pazarlama</div>
+<div class="chart-value" style="width: 40%;">$5,000 (%10)</div>
+</div>
+<div class="chart-bar">
+<div class="chart-label">Araçlar &amp; Yazılım</div>
+<div class="chart-value" style="width: 20%;">$2,500 (%5)</div>
+</div>
+<div class="chart-bar">
+<div class="chart-label">Operasyonel Maliyetler</div>
+<div class="chart-value" style="width: 15%;">$2,500 (%5)</div>
+</div>
+</div>
+<div class="highlight-box">
+<strong>Toplam İhtiyaç: $50,000</strong>
+</div>
+</div>
+<div>
+<h3>📈 Beklenen Getiriler</h3>
+<ul>
+<li><span class="icon">📊</span> <strong>1-2. Ay:</strong> Temel kurulum, minimal satış</li>
+<li><span class="icon">🚀</span> <strong>3-4. Ay:</strong> Büyüme aşaması, başa baş</li>
+<li><span class="icon">💰</span> <strong>5-6. Ay:</strong> Kar elde etme</li>
+<li><span class="icon">🏆</span> <strong>6. Ay+:</strong> Ölçeklenmiş operasyonlar</li>
+</ul>
+<div class="case-study">
+<h4>Muhafazakar Projeksiyonlar</h4>
+<ul>
+<li>• 6. ay aylık satış: $75K</li>
+<li>• Net kar marjı: %25</li>
+<li>• Aylık kar: $18,750</li>
+<li>• Yatırım getirisi süresi: 8-10 ay</li>
+</ul>
+</div>
+<div class="success-box">
+<strong>Risk Azaltma:</strong><br/>
+                        • Küçük envanter ile başlayın, pazarı test edin, sonra performans verilerine göre ölçekleyin.<br/>
+                        • İlk aşamada küçük envanterle başlayarak riski minimize edin, performans verilerine göre ölçeklendirin.
+                    </div>
+</div>
+</div>
+</div>
+<!-- Slide 27: Başarı Metrikleri -->
+<div class="slide"><img src="https://i.hizliresim.com/rdlgc17.png" style="position: absolute; top: 20px; left: 30px; max-width: 37.5px; z-index: 1000;"/>
+<div class="slide-number">27/38</div>
+<h2>Başarı Metrikleri - 360° Performans Kontrol Paneli</h2>
+<div class="two-column">
+<div>
+<h3>📊 Temel Performans Göstergeleri</h3>
+<div class="chart-container">
+<div class="chart-bar">
+<div class="chart-label">Aylık Satış</div>
+<div class="chart-value" style="width: 90%;">Hedef: $50K+</div>
+</div>
+<div class="chart-bar">
+<div class="chart-label">Reklam Maliyeti Oranı</div>
+<div class="chart-value" style="width: 70%;">Hedef: &lt;%25</div>
+</div>
+<div class="chart-bar">
+<div class="chart-label">Organik Sıralama</div>
+<div class="chart-value" style="width: 85%;">Hedef: İlk 3</div>
+</div>
+<div class="chart-bar">
+<div class="chart-label">Yorum Puanı</div>
+<div class="chart-value" style="width: 95%;">Hedef: 4.5+</div>
+</div>
+</div>
+</div>
+<div>
+<h3>🎯 Gelişmiş Metrikler</h3>
+<ul>
+<li><span class="icon">💰</span> <strong>Müşteri Yaşam Değeri:</strong> $150+ hedef</li>
+<li><span class="icon">🔄</span> <strong>Tekrar Satın Alma Oranı:</strong> %35+ hedef</li>
+<li><span class="icon">📈</span> <strong>Pazar Payı Büyümesi:</strong> Aylık +%5</li>
+<li><span class="icon">🛡️</span> <strong>Marka Savunması:</strong> %90+ kapsama</li>
+<li><span class="icon">🌟</span> <strong>Ses Payı:</strong> Kategori varlığı</li>
+</ul>
+<div class="info-box">
+<strong>💡 Haftalık İnceleme Kontrol Listesi:</strong><br/>
+                        • Satış vs hedef analizi<br/>
+                        • Reklam performansı optimizasyonu<br/>
+                        • Rakip hareket takibi<br/>
+                        • Stok seviyesi izleme<br/>
+                        • Müşteri geri bildirim analizi
+                    </div>
+</div>
+</div>
+</div>
+<!-- Slide 28: Amazon Creator Connections -->
+<div class="slide creator-connections-slide"><img src="https://i.hizliresim.com/rdlgc17.png" style="position: absolute; top: 20px; left: 30px; max-width: 37.5px; z-index: 1000;"/>
+<div class="slide-number">28/38</div>
+<h2>Amazon Creator Connections ile Marka Büyütme</h2>
+<p class="subtitle">Influencer pazarlamasıyla Amazon satışlarını artırmanın güçlü yolu</p>
+<div class="two-column">
+<div>
+<h3>Creator Connections Nedir?</h3>
+<ul>
+<li><span class="icon">🎥</span> <strong>Influencer Ortaklıkları:</strong> Sosyal medya fenomenleriyle iş birliği yaparak ürün tanıtımı</li>
+<li><span class="icon">📈</span> <strong>Satış Artışı:</strong> Güvenilir içerik üreticileriyle marka farkındalığını artırır</li>
+<li><span class="icon">🌐</span> <strong>Geniş Erişim:</strong> Instagram, TikTok ve YouTube'da hedef kitlelere ulaşım</li>
+<li><span class="icon">🔗</span> <strong>Doğrudan Atıf:</strong> Influencer bağlantılarıyla Amazon satışlarını izleme</li>
+<li><span class="icon">🛒</span> <strong>TikTok Shop Entegrasyonu:</strong> Kullanıcılar TikTok'tan ayrılmadan Amazon hesabıyla doğrudan alışveriş yapabilir</li>
+</ul>
+</div>
+<div>
+<h3>Örnek Çalışma: Ev Tekstili Markası</h3>
+<div class="case-study">
+<h4>Strateji</h4>
+<ul>
+<li>• 5 mikro-influencer ile iş birliği (her biri 50K-100K takipçi)</li>
+<li>• TikTok ve Instagram'da ürün kullanım videoları</li>
+<li>• Amazon Atıf bağlantıları ile trafik yönlendirme</li>
+</ul>
+<h4>Sonuçlar</h4>
+<div class="metrics">
+<div class="metric">
+<div class="metric-value">1.2M</div>
+<div class="metric-label">Erişim: Görüntüleme</div>
+</div>
+<div class="metric">
+<div class="metric-value">%2.3</div>
+<div class="metric-label">Tıklama Oranı (sektör ort: %1.5)</div>
+</div>
+<div class="metric">
+<div class="metric-value">$45,000</div>
+<div class="metric-label">Satış Artışı: Ek satış (3 ay)</div>
+</div>
+<div class="metric">
+<div class="metric-value">%35</div>
+<div class="metric-label">Marka Farkındalığı: Artış</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="creator-visual">
+<h3>Görsel Önerisi</h3>
+<ul>
+<li><strong>Dinamik Görseller:</strong> Influencer videolarından kesitler, ürün kullanım sahneleri</li>
+<li><strong>Renkli Tasarım:</strong> Canlı renk paletleriyle dikkat çekici slayt düzeni</li>
+<li><strong>İnfografik:</strong> Erişim ve satış artışını gösteren grafik</li>
+</ul>
+</div>
+<div class="info-box">
+<strong>💡 İpucu:</strong><br/>
+                Influencer seçiminde niş kitlelere odaklanın ve Amazon Atıf bağlantılarını kullanın.
+            </div>
+</div>
+<!-- Slide 29: En Büyük Hatalar -->
+<div class="slide"><img src="https://i.hizliresim.com/rdlgc17.png" style="position: absolute; top: 20px; left: 30px; max-width: 37.5px; z-index: 1000;"/>
+<div class="slide-number">29/38</div>
+<h2>En Büyük Hatalar ve Nasıl Kaçınılır</h2>
+<div class="content-grid">
+<div class="card">
+<h4><span class="icon">💸</span>Para Yakma Hataları</h4>
+<div class="warning-box" style="margin: 15px 0;">
+<strong>HATA:</strong> Geniş eşleşme anahtar kelimeler ile sınırsız bütçe
+                    </div>
+<p><strong>ÇÖZÜM:</strong></p>
+<ul>
+<li>• Tam eşleşme ile başlayın</li>
+<li>• Günlük bütçe sınırları</li>
+<li>• Negatif anahtar kelime listeleri</li>
+<li>• Düzenli teklif ayarlamaları</li>
+</ul>
+</div>
+<div class="card">
+<h4><span class="icon">📦</span>Envanter Felaketleri</h4>
+<div class="warning-box" style="margin: 15px 0;">
+<strong>HATA:</strong> Sezonsal talebi yanlış hesaplama
+                    </div>
+<p><strong>ÇÖZÜM:</strong></p>
+<ul>
+<li>• Geçmiş veri analizi</li>
+<li>• Güvenlik stoğu hesaplamaları</li>
+<li>• Tedarikçi yedek planları</li>
+<li>• Teslimat süresi optimizasyonu</li>
+</ul>
+</div>
+<div class="card">
+<h4><span class="icon">🔍</span>Arama Motoru Optimizasyonu Felaketleri</h4>
+<div class="warning-box" style="margin: 15px 0;">
+<strong>HATA:</strong> Anahtar kelime doldurma ve ilgisiz anahtar kelimeler
+                    </div>
+<p><strong>ÇÖZÜM:</strong></p>
+<ul>
+<li>• Doğal anahtar kelime yerleşimi</li>
+<li>• Kullanıcı niyeti eşleştirme</li>
+<li>• A/B test yaklaşımı</li>
+<li>• Performans izleme</li>
+</ul>
+</div>
+<div class="card">
+<h4><span class="icon">⚖️</span>Uyumluluk Sorunları</h4>
+<div class="warning-box" style="margin: 15px 0;">
+<strong>HATA:</strong> Amazon kullanım şartları ihlalleri
+                    </div>
+<p><strong>ÇÖZÜM:</strong></p>
+<ul>
+<li>• Hukuki danışmanlık</li>
+<li>• Düzenli politika güncellemeleri</li>
+<li>• Uygun belgelendirme</li>
+<li>• Uyumluluk izleme</li>
+</ul>
+</div>
+</div>
+</div>
+<!-- Slide 30: Sonraki Adımlar -->
+<div class="slide"><img src="https://i.hizliresim.com/rdlgc17.png" style="position: absolute; top: 20px; left: 30px; max-width: 37.5px; z-index: 1000;"/>
+<div class="slide-number">30/38</div>
+<h2>Sonraki Adımlar ve Kaynaklar</h2>
+<div class="two-column">
+<div>
+<h3>🎯 Acil Eylemler</h3>
+<ul>
+<li><span class="icon">📋</span> <strong>Değerlendirme:</strong> Mevcut durumunuzu analiz edin</li>
+<li><span class="icon">🎯</span> <strong>Hedef Belirleme:</strong> 6-12 aylık hedefler belirleyin</li>
+<li><span class="icon">💰</span> <strong>Bütçe Planlaması:</strong> Gerçekçi bütçe hazırlayın</li>
+<li><span class="icon">👥</span> <strong>Takım Oluşturma:</strong> Gerekli uzmanlıkları tespit edin</li>
+<li><span class="icon">📅</span> <strong>Zaman Çizelgesi:</strong> Uygulama takvimi oluşturun</li>
+</ul>
+<div class="info-box">
+<strong>🚀 Hızlı Başlangıç:</strong><br/>
+                        İlk 48 saat içinde: Marka Kaydı başvurusu + Yapay zeka araçları aboneliği + Rakip analizi başlatma
+                    </div>
+</div>
+<div>
+<h3>📚 Temel Kaynaklar</h3>
+<ul>
+<li><span class="icon">📖</span> Amazon Satıcı Merkezi Yardım Dokümanları</li>
+<li><span class="icon">🎓</span> Amazon Reklam Öğrenme Konsolu</li>
+<li><span class="icon">📊</span> Helium 10 Özgürlük Bileti</li>
+<li><span class="icon">🤖</span> ChatGPT İstem Kütüphaneleri</li>
+<li><span class="icon">📱</span> Amazon Satıcı Uygulaması</li>
+</ul>
+<div class="success-box">
+<strong>Sürekli Öğrenme:</strong><br/>
+                        • Haftalık Amazon güncellemeleri<br/>
+                        • Aylık strateji incelemeleri<br/>
+                        • Üç aylık hedef değerlendirmeleri<br/>
+                        • Yıllık stratejik planlama
+                    </div>
+<div class="highlight-box">
+<strong>Unutmayın:</strong> Amazon başarısı = Strateji + Uygulama + Sebat
+                    </div>
+</div>
+</div>
+</div>
+<!-- Slide 31: Hazır mısınız? -->
+<div class="slide"><img src="https://i.hizliresim.com/rdlgc17.png" style="position: absolute; top: 20px; left: 30px; max-width: 37.5px; z-index: 1000;"/>
+<div class="slide-number">31/38</div>
+<h1>Hazır Mısınız?</h1>
+<div class="action-box">
+                Amazon'da başarı için tüm araçlar elinizde. Şimdi harekete geçme zamanı!
+            </div>
+<div class="stats-container">
+<div class="stat-item">
+<span class="stat-number">30</span>
+<span class="stat-label">Günde temel kurulum</span>
+</div>
+<div class="stat-item">
+<span class="stat-number">90</span>
+<span class="stat-label">Günde tam optimizasyon</span>
+</div>
+<div class="stat-item">
+<span class="stat-number">6</span>
+<span class="stat-label">Ayda sürdürülebilir büyüme</span>
+</div>
+</div>
+<div class="content-grid">
+<div class="card">
+<h4><span class="icon">✅</span>Bugün Yapabilecekleriniz</h4>
+<ul>
+<li>• Amazon Seller Central hesabı açın</li>
+<li>• Marka Kaydı başvurusu yapın</li>
+<li>• Rakip analizi başlatın</li>
+<li>• ChatGPT Plus aboneliği alın</li>
+</ul>
+</div>
+<div class="card">
+<h4><span class="icon">📅</span>Bu Hafta Tamamlamanız Gerekenler</h4>
+<ul>
+<li>• İlk 5 ürününüzü seçin</li>
+<li>• Ürün fotoğraflarını hazırlayın</li>
+<li>• Anahtar kelime araştırması yapın</li>
+<li>• Bütçe planlamasını finalize edin</li>
+</ul>
+</div>
+<div class="card">
+<h4><span class="icon">🚀</span>İlk Ay Hedefleriniz</h4>
+<ul>
+<li>• İlk ürünlerinizi listeleyin</li>
+<li>• İlk reklam kampanyalarını başlatın</li>
+<li>• Sosyal medya hesaplarını kurun</li>
+<li>• İlk satışlarınızı gerçekleştirin</li>
+</ul>
+</div>
+</div>
+</div>
+<!-- Slide 32: Kapanış -->
+<div class="slide"><img src="https://i.hizliresim.com/rdlgc17.png" style="position: absolute; top: 20px; left: 30px; max-width: 37.5px; z-index: 1000;"/>
+<div class="slide-number">32/38</div>
+<h1>Amazon'da Başarı<br/>Artık Elinizde</h1>
+<div class="stats-container">
+<div class="stat-item">
+<span class="stat-number">5</span>
+<span class="stat-label">Saat değerli bilgi</span>
+</div>
+<div class="stat-item">
+<span class="stat-number">32</span>
+<span class="stat-label">Eyleme dönüştürülebilir strateji</span>
+</div>
+<div class="stat-item">
+<span class="stat-number">∞</span>
+<span class="stat-label">Potansiyel</span>
+</div>
+</div>
+<div class="highlight-box">
+                "Bilgi güçtür, ama uygulanan bilgi başarıdır"
+            </div>
+<div class="success-box">
+<strong>Sonraki 90 gün sizin için kritik!</strong><br/>
+                Öğrendiklerinizi hemen uygulamaya başlayın. Amazon'da başarı = Hızlı hareket + Sürekli optimizasyon + Sabırlı büyüme
+            </div>
+<p class="subtitle">Denizli İhracatçılar Birliği'ne teşekkürler</p>
+<div class="action-box">
+                Şimdi harekete geçin! İlk adımınızı bugün atın.
+            </div>
+</div>
+<!-- Slide 33: Q&A Başlangıç -->
+<div class="slide"><img src="https://i.hizliresim.com/rdlgc17.png" style="position: absolute; top: 20px; left: 30px; max-width: 37.5px; z-index: 1000;"/>
+<div class="slide-number">33/38</div>
+<h1>Soru &amp; Cevap</h1>
+<p class="subtitle">Merak ettiklerinizi sorun, deneyimlerimizi paylaşalım</p>
+<div class="highlight-box">
+                💡 En sık sorulan sorular ve pratik yanıtlar
+            </div>
+<div class="content-grid">
+<div class="card">
+<h4><span class="icon">❓</span>Teknik Sorular</h4>
+<p>Kurulum, entegrasyon ve teknik detaylar</p>
+</div>
+<div class="card">
+<h4><span class="icon">💰</span>Bütçe &amp; Maliyet</h4>
+<p>Yatırım planlaması ve getiri hesaplamaları</p>
+</div>
+<div class="card">
+<h4><span class="icon">📈</span>Strateji &amp; Taktik</h4>
+<p>Pazarlama stratejileri ve uygulama detayları</p>
+</div>
+<div class="card">
+<h4><span class="icon">🚀</span>Başlangıç Adımları</h4>
+<p>İlk adımlar ve hızlı başlangıç önerileri</p>
+</div>
+</div>
+</div>
+<!-- Slide 34: Sık Sorulan Sorular -->
+<div class="slide"><img src="https://i.hizliresim.com/rdlgc17.png" style="position: absolute; top: 20px; left: 30px; max-width: 37.5px; z-index: 1000;"/>
+<div class="slide-number">34/38</div>
+<h2>En Sık Sorulan Sorular</h2>
+<div class="content-grid">
+<div class="card">
+<h4><span class="icon">💵</span>Minimum başlangıç bütçesi nedir?</h4>
+<p><strong>Yanıt:</strong> $15,000-20,000 ile başlanabilir. $5,000 envanter + $3,000 reklam + $2,000 operasyonel maliyetler. Küçük başlayıp test ederek ölçekleyin.</p>
+</div>
+<div class="card">
+<h4><span class="icon">⏰</span>İlk satışa kadar ne kadar sürer?</h4>
+<p><strong>Yanıt:</strong> Doğru strateji ile 2-4 hafta. Listing optimizasyonu + agresif reklam kampanyası ile ilk satışları hızlandırabilirsiniz.</p>
+</div>
+<div class="card">
+<h4><span class="icon">🎯</span>Hangi ürünlerle başlamalıyım?</h4>
+<p><strong>Yanıt:</strong> Mevcut en iyi ürünlerinizle başlayın. Yüksek kalite, orta fiyat segmenti, az rekabet olan ürünleri tercih edin.</p>
+</div>
+<div class="card">
+<h4><span class="icon">📊</span>FBA mı yoksa FBM mi?</h4>
+<p><strong>Yanıt:</strong> Başlangıçta FBM ile test edin, satış hacmi arttıkça FBA'ya geçin. FBA Prime avantajı sağlar ama maliyetli.</p>
+</div>
+<div class="card">
+<h4><span class="icon">🔍</span>Rekabet çok yoğun, nasıl öne çıkarım?</h4>
+<p><strong>Yanıt:</strong> Uzun kuyruk anahtar kelimeler + superior ürün görselleri + agresif başlangıç fiyatlandırması ile틈새 pazarlardan başlayın.</p>
+</div>
+<div class="card">
+<h4><span class="icon">⚖️</span>Vergi ve yasal konular nasıl?</h4>
+<p><strong>Yanıt:</strong> ABD'de sales tax, TR'de KDV. Muhasebe uzmanı ile çalışın. Amazon tax hesaplama servislerini kullanın.</p>
+</div>
+</div>
+</div>
+<!-- Slide 35: Kaynak Linkler -->
+<div class="slide"><img src="https://i.hizliresim.com/rdlgc17.png" style="position: absolute; top: 20px; left: 30px; max-width: 37.5px; z-index: 1000;"/>
+<div class="slide-number">35/38</div>
+<h2>Faydalı Kaynaklar &amp; Araçlar</h2>
+<div class="content-grid">
+<div class="card">
+<h4><span class="icon">🛠️</span>Temel Araçlar</h4>
+<ul>
+<li>• <strong>Helium 10:</strong> Anahtar kelime &amp; pazar araştırması</li>
+<li>• <strong>Jungle Scout:</strong> Ürün fırsatları</li>
+<li>• <strong>AMZScout:</strong> Rakip analizi</li>
+<li>• <strong>Sellics:</strong> PPC optimizasyonu</li>
+</ul>
+</div>
+<div class="card">
+<h4><span class="icon">🎨</span>Tasarım Araçları</h4>
+<ul>
+<li>• <strong>Canva Pro:</strong> Ürün görselleri</li>
+<li>• <strong>Figma:</strong> A+ içerik tasarımı</li>
+<li>• <strong>Photoshop:</strong> Profesyonel düzenleme</li>
+<li>• <strong>Placeit:</strong> Mockup oluşturma</li>
+</ul>
+</div>
+<div class="card">
+<h4><span class="icon">📊</span>Analitik Platformları</h4>
+<ul>
+<li>• <strong>Amazon Brand Analytics:</strong> Ücretsiz veri</li>
+<li>• <strong>Google Analytics:</strong> Trafik analizi</li>
+<li>• <strong>Facebook Analytics:</strong> Sosyal medya ROI</li>
+<li>• <strong>Hotjar:</strong> Kullanıcı davranışları</li>
+</ul>
+</div>
+<div class="card">
+<h4><span class="icon">🤖</span>Yapay Zeka Araçları</h4>
+<ul>
+<li>• <strong>ChatGPT Plus:</strong> İçerik oluşturma</li>
+<li>• <strong>Claude:</strong> Detaylı analiz</li>
+<li>• <strong>Midjourney:</strong> Görsel üretimi</li>
+<li>• <strong>Copy.ai:</strong> Reklam metinleri</li>
+</ul>
+</div>
+<div class="card">
+<h4><span class="icon">📚</span>Eğitim Kaynakları</h4>
+<ul>
+<li>• <strong>Amazon Seller University:</strong> Resmi eğitimler</li>
+<li>• <strong>YouTube Kanalları:</strong> Güncel stratejiler</li>
+<li>• <strong>Podcast'ler:</strong> Uzman görüşleri</li>
+<li>• <strong>Blog'lar:</strong> Trend analizi</li>
+</ul>
+</div>
+<div class="card">
+<h4><span class="icon">🌐</span>Yararlı Web Siteleri</h4>
+<ul>
+<li>• <strong>sellercentral.amazon.com:</strong> Ana platform</li>
+<li>• <strong>advertising.amazon.com:</strong> Reklam yönetimi</li>
+<li>• <strong>brandservices.amazon.com:</strong> Marka araçları</li>
+<li>• <strong>developer.amazon.com:</strong> API dokümantasyonu</li>
+</ul>
+</div>
+</div>
+</div>
+<!-- Slide 36: Son Öneriler -->
+<div class="slide"><img src="https://i.hizliresim.com/rdlgc17.png" style="position: absolute; top: 20px; left: 30px; max-width: 37.5px; z-index: 1000;"/>
+<div class="slide-number">36/38</div>
+<h2>Son Öneriler &amp; Başarı İpuçları</h2>
+<div class="two-column">
+<div>
+<h3>🎯 Kritik Başarı Faktörleri</h3>
+<ul>
+<li><span class="icon">⚡</span> <strong>Hızlı Hareket:</strong> Öğrendiklerinizi 48 saat içinde uygulamaya başlayın</li>
+<li><span class="icon">📊</span> <strong>Veri Odaklı Kararlar:</strong> Tahminler değil, veriler ile hareket edin</li>
+<li><span class="icon">🔄</span> <strong>Sürekli Test:</strong> Her ay yeni bir A/B testi yapın</li>
+<li><span class="icon">💰</span> <strong>Uzun Vadeli Düşünce:</strong> İlk 6 ay yatırım, sonrası getiri dönemi</li>
+<li><span class="icon">🤝</span> <strong>Müşteri Odaklılık:</strong> Müşteri memnuniyeti en yüksek öncelik</li>
+</ul>
+</div>
+<div>
+<h3>⚠️ Kaçınılması Gerekenler</h3>
+<ul>
+<li><span class="icon">🚫</span> <strong>Aşırı Optimizm:</strong> Gerçekçi hedefler koyun</li>
+<li><span class="icon">💸</span> <strong>Bütçe Disiplinsizliği:</strong> Günlük limitleri aşmayın</li>
+<li><span class="icon">⏰</span> <strong>Sabırsızlık:</strong> Sonuçlar 2-3 ay sonra netleşir</li>
+<li><span class="icon">🔍</span> <strong>Tek Kanala Bağımlılık:</strong> Çoklu pazarlama kanalları kullanın</li>
+<li><span class="icon">📱</span> <strong>Teknoloji Korkusu:</strong> Yapay zeka araçlarını öğrenin</li>
+</ul>
+</div>
+</div>
+<div class="case-study">
+<h4>🏆 Altın Tavsiye</h4>
+<p><strong>"Amazon'da başarı, bir gece işi değil; tutarlı çaba, akıllı strateji ve sabırlı uygulama ile gelir. Her gün küçük iyileştirmeler yapmak, büyük atılımlardan daha değerlidir."</strong></p>
+</div>
+<div class="highlight-box">
+<strong>🎯 90 Günlük Challenge:</strong> Bu sunumdan sonra 90 gün boyunca öğrendiklerinizi uygulayın. Sonuçları ölçün, deneyimlerinizi paylaşın!
+            </div>
+</div>
+<!-- Slide 37: Teşekkürler -->
+<div class="slide"><img src="https://i.hizliresim.com/rdlgc17.png" style="position: absolute; top: 20px; left: 30px; max-width: 37.5px; z-index: 1000;"/>
+<div class="slide-number">37/38</div>
+<h1>Teşekkürler!</h1>
+<p class="subtitle">Amazon Amerika pazarında başarılar dileriz</p>
+<div class="stats-container">
+<div class="stat-item">
+<span class="stat-number">🚀</span>
+<span class="stat-label">Yolculuğunuz başlıyor</span>
+</div>
+<div class="stat-item">
+<span class="stat-number">💪</span>
+<span class="stat-label">Başarı elinizde</span>
+</div>
+<div class="stat-item">
+<span class="stat-number">🌟</span>
+<span class="stat-label">Hedefinize odaklanın</span>
+</div>
+</div>
+<div class="success-box">
+<strong>Bu sunum sonrası yapmanız gerekenler:</strong><br/>
+                1. Notlarınızı gözden geçirin<br/>
+                2. İlk adım planınızı oluşturun<br/>
+                3. Bugün bir harekete geçin<br/>
+                4. İlerleyişinizi takip edin
+            </div>
+<div class="action-box">
+<strong>İletişim kurmayı unutmayın!</strong><br/>
+                Sorularınız, başarı hikayeleriniz ve deneyimlerinizi bizimle paylaşın
+            </div>
+<p class="subtitle" style="margin-top: 30px; font-size: 1.1rem; color: #10B981;">
+                🇹🇷 Türk markalarının Amazon ABD pazarında başarı elde etmesi için<br/>
+                💼 Denizli İhracatçılar Birliği İş Birliği ile sunulmuştur
+            </p>
+</div>
+<!-- Slide 38: İletişim -->
+<div class="slide"><img src="https://i.hizliresim.com/rdlgc17.png" style="position: absolute; top: 20px; left: 30px; max-width: 37.5px; z-index: 1000;"/>
+<div class="slide-number">38/38</div>
+<h1>İletişim</h1>
+<div style="text-align: center; margin-top: 30px;">
+<!-- Personal Image - Updated with new URL and square styling -->
+<img alt="İlhan Selçuk" src="https://i.hizliresim.com/147o9bu.jpeg" style="max-width: 300px; border-radius: 0; border: 2px solid #DE3A2E; box-shadow: 0 10px 25px rgba(222, 58, 46, 0.3); margin-bottom: 30px;"/>
+<div style="background: rgba(15, 23, 42, 0.7); padding: 40px; border-radius: 20px; border: 1px solid rgba(222, 58, 46, 0.3); max-width: 800px; margin: 0 auto;">
+<div style="font-size: 1.3rem; color: #E2E8F0; line-height: 2; margin-bottom: 30px;">
+<div style="margin: 15px 0; display: flex; align-items: center; justify-content: center; gap: 15px;">
+<span style="font-size: 1.5rem;">📧</span>
+<strong style="color: #DE3A2E;">E-mail:</strong>
+<span>ilhan@mentoreis.com</span>
+</div>
+<div style="margin: 15px 0; display: flex; align-items: center; justify-content: center; gap: 15px;">
+<span style="font-size: 1.5rem;">📞</span>
+<strong style="color: #DE3A2E;">Tel:</strong>
+<span>05331469640</span>
+</div>
+<div style="margin: 15px 0; display: flex; align-items: center; justify-content: center; gap: 15px;">
+<span style="font-size: 1.5rem;">🌐</span>
+<strong style="color: #DE3A2E;">Web Sitesi:</strong>
+<span>www.mentoreis.com</span>
+</div>
+<div style="margin: 15px 0; display: flex; align-items: center; justify-content: center; gap: 15px;">
+<span style="font-size: 1.5rem;">📸</span>
+<strong style="color: #DE3A2E;">Instagram:</strong>
+<span>@ilhanselcukamazon</span>
+</div>
+<div style="margin: 15px 0; display: flex; align-items: center; justify-content: center; gap: 15px;">
+<span style="font-size: 1.5rem;">💼</span>
+<strong style="color: #DE3A2E;">LinkedIn:</strong>
+<span>https://www.linkedin.com/in/ilhanselcuk/</span>
+</div>
+<div style="margin: 15px 0; display: flex; align-items: center; justify-content: center; gap: 15px;">
+<span style="font-size: 1.5rem;">▶️</span>
+<strong style="color: #DE3A2E;">YouTube:</strong>
+<span>@ilhanselcukamazon</span>
+</div>
+</div>
+<div style="margin-top: 40px; padding-top: 30px; border-top: 2px solid rgba(222, 58, 46, 0.3);">
+<p style="font-style: italic; font-size: 1.5rem; color: #10B981; text-align: center; font-weight: 300;">
+                            "Quality is never a coincidence"
+                        </p>
+</div>
+</div>
+</div>
+</div>
+<div class="slide"><div class="slide-number">39/39</div><div style="display: flex; justify-content: center; align-items: center; height: 100%;"><img src="https://i.hizliresim.com/a0vo8i9.jpeg?_gl=1*5jr6g1*_ga*MTU4MjM0MzU1Mi4xNzUxOTMzNDU4*_ga_M9ZRXYS2YN*czE3NTE5NDc2ODIkbzMkZzEkdDE3NTE5NDc2OTQkajQ4JGwwJGgw" style="max-width: 300px; height: auto; margin-bottom: 20px;"/></div><p style="text-align: center; font-size: 1.3rem; color: #F8FAFC; font-weight: 500; max-width: 600px; margin: 0 auto;">Sunumu talep etmek için lütfen QR kodu okutunuz ve başvuru formunu doldurunuz</p></div></div>
+<div class="navigation">
+<button class="nav-btn" id="prevBtn" onclick="changeSlide(-1)">◀ Önceki</button>
+<span id="slideCounter" style="color: #94A3B8; font-size: 0.9rem; margin: 0 15px;">1/38</span>
+<button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">Sonraki ▶</button>
+</div>
+<script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+
+        function showSlide(index) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[index].classList.add('active');
+            
+            // Progress bar güncelleme
+            const progress = ((index + 1) / totalSlides) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+            
+            // Slide counter güncelleme
+            document.getElementById('slideCounter').textContent = `${index + 1}/${totalSlides}`;
+            
+            // Navigation butonlarını güncelleme
+            document.getElementById('prevBtn').disabled = index === 0;
+            document.getElementById('nextBtn').disabled = index === totalSlides - 1;
+        }
+
+        function changeSlide(direction) {
+            const newSlide = currentSlide + direction;
+            if (newSlide >= 0 && newSlide < totalSlides) {
+                currentSlide = newSlide;
+                showSlide(currentSlide);
+            }
+        }
+
+        // Klavye navigasyonu
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                e.preventDefault();
+                if (currentSlide < totalSlides - 1) {
+                    changeSlide(1);
+                }
+            } else if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                if (currentSlide > 0) {
+                    changeSlide(-1);
+                }
+            } else if (e.key === 'Home') {
+                e.preventDefault();
+                currentSlide = 0;
+                showSlide(currentSlide);
+            } else if (e.key === 'End') {
+                e.preventDefault();
+                currentSlide = totalSlides - 1;
+                showSlide(currentSlide);
+            }
+        });
+
+        // Touch/swipe support for mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        document.addEventListener('touchstart', function(e) {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+
+        document.addEventListener('touchend', function(e) {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+
+        function handleSwipe() {
+            if (touchEndX < touchStartX - 50) {
+                // Swipe left - next slide
+                if (currentSlide < totalSlides - 1) {
+                    changeSlide(1);
+                }
+            }
+            if (touchEndX > touchStartX + 50) {
+                // Swipe right - previous slide
+                if (currentSlide > 0) {
+                    changeSlide(-1);
+                }
+            }
+        }
+
+        // İlk yükleme
+        showSlide(0);
+
+        // Fullscreen toggle (F11 benzeri)
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'F11') {
+                e.preventDefault();
+                if (!document.fullscreenElement) {
+                    document.documentElement.requestFullscreen();
+                } else {
+                    document.exitFullscreen();
+                }
+            }
+        });
+    </script>
+</body>
+</html>
